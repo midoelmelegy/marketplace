@@ -3,7 +3,9 @@ import NavbarLogo from 'components/navbar/NavbarLogo'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
-import { HiOutlineLogout, HiX } from 'react-icons/hi'
+import { FaRegUserCircle } from 'react-icons/fa'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
+import { HiOutlineLogout, HiX, HiOutlineUserCircle } from 'react-icons/hi'
 import {
   useAccount,
   useConnect,
@@ -92,6 +94,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
                 <Link href={`/address/${accountData.address}`}>
                   <a className="group reservoir-label-l flex w-full cursor-pointer items-center justify-between rounded border-b border-neutral-300 p-4 text-[#4B5563] outline-none transition hover:bg-neutral-100 hover:text-[#1F2937] focus:bg-neutral-100 dark:border-neutral-600 dark:text-white dark:hover:bg-neutral-600">
                     Portfolio
+                    <FaRegUserCircle className="h-6 w-7" />
                   </a>
                 </Link>
 
@@ -111,7 +114,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
                   onClick={() => setWalletModal(true)}
                   className="btn-primary-fill col-span-2 col-start-3 w-full md:col-span-4 md:col-start-5 lg:col-span-4 lg:col-start-9"
                 >
-                  Connect Wallet
+                  <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet
                 </button>
               </div>
             )}

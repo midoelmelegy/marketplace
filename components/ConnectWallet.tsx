@@ -11,6 +11,7 @@ import EthAccount from './EthAccount'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Link from 'next/link'
 import { HiOutlineLogout } from 'react-icons/hi'
+import { FaRegUserCircle } from 'react-icons/fa'
 import FormatEth from './FormatEth'
 import ConnectWalletModal from './ConnectWalletModal'
 import { GlobalContext } from 'context/GlobalState'
@@ -60,6 +61,7 @@ const ConnectWallet: FC = () => {
             <DropdownMenu.Item asChild>
               <a className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                 Portfolio
+                <FaRegUserCircle className="h-6 w-7" />
               </a>
             </DropdownMenu.Item>
           </Link>
