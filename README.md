@@ -35,7 +35,7 @@ We currently offer hosted and self hosted deployment options. For self hosted de
 ### Built With
 
 * [ReservoirKit](https://docs.reservoir.tools/docs/reservoir-kit)
-* [Reservoir Protocol and API](https://reservoirprotocol.github.io/)
+* [Reservoir Protocol and API](https://www.seaport.market/)
 * [Next.js](https://nextjs.org/)
 * [React.js](https://reactjs.org/)
 * [Ethers.io](https://ethers.io/)
@@ -102,6 +102,6 @@ If you'd like to contribute please follow the [guidelines](https://github.com/re
 
 Twitter: [@reservoir0x](https://twitter.com/reservoir0x)
 Discord: [Reservoir Protocol](https://discord.gg/j5K9fESNwh)
-Project Link: [Reservoir Protocol](https://reservoirprotocol.github.io/)
+Project Link: [Reservoir Protocol](https://www.seaport.market/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
