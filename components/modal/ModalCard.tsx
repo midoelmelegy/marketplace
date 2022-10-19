@@ -80,7 +80,7 @@ const ModalCard: FC<Props> = ({
           </div>
           {!DISABLE_POWERED_BY_RESERVOIR && (
             <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[510px]">
-              <Link href="https://reservoirprotocol.github.io/">
+              <Link href="https://www.seaport.market/">
                 <a
                   className="reservoir-tiny flex gap-2 dark:text-white"
                   target="_blank"
@@ -90,8 +90,8 @@ const ModalCard: FC<Props> = ({
                     alt="watermark"
                     src={
                       !!DARK_MODE
-                        ? `/reservoir_watermark_dark.svg`
-                        : `/reservoir_watermark_light.svg`
+                      ? `/seaport_watermark_dark.svg`
+                      : `/seaport_watermark_light.svg`
                     }
                   />
                 </a>

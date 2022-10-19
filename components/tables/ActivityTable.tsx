@@ -222,7 +222,7 @@ const ActivityTableRow: FC<ActivityTableRowProps> = ({ sale }) => {
                   width={48}
                   height={48}
                 />
-                <div className="ml-2 grid truncate">
+                <div className="ml-2 grid truncate whitespace-nowrap dark:text-white max-w-[195px]">
                   <div className="reservoir-h6 dark:text-white">
                     {sale.token?.tokenName ||
                       sale.token?.tokenId ||
@@ -320,7 +320,7 @@ const ActivityTableRow: FC<ActivityTableRowProps> = ({ sale }) => {
               width={48}
               height={48}
             />
-            <div className="ml-2 grid truncate">
+            <div className="ml-2 grid truncate whitespace-nowrap dark:text-white max-w-[195px]">
               <div className="reservoir-h6 dark:text-white">
                 {sale.token?.tokenName ||
                   sale.token?.tokenId ||

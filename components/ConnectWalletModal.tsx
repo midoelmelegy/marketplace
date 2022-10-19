@@ -3,6 +3,7 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { HiX } from 'react-icons/hi'
 import { useConnect } from 'wagmi'
 import { FiChevronRight } from 'react-icons/fi'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 import { GlobalContext } from 'context/GlobalState'
 
 const ConnectWalletModal: FC = () => {
@@ -21,7 +22,7 @@ const ConnectWalletModal: FC = () => {
       }
     >
       <Dialog.Trigger className="btn-primary-fill dark:border-neutral-600  dark:text-white dark:ring-primary-900 dark:focus:ring-4">
-        Connect Wallet
+      <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay>
