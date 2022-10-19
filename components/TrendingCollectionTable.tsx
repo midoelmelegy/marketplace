@@ -35,8 +35,8 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
     : []
 
   const columns = isSmallDevice
-    ? ['COLLECTION', 'FLOOR PRICE']
-    : ['COLLECTION', 'VOLUME', 'FLOOR PRICE', 'SUPPLY']
+    ? ['Collection', 'Floor Price']
+    : ['Collection', 'Volume', 'Floor Price', 'Supply']
 
   return (
     <div className="mb-11 overflow-x-auto">
@@ -81,20 +81,19 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                 className="group h-[88px] border-b border-neutral-300 dark:border-neutral-600 dark:text-white"
               >
                 {/* COLLECTION */}
-                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap pl-6 py-4 dark:text-white"
-                    style={{ maxWidth: 400, textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', display: 'block' }}>
-                  <div className="reservoir-h6 mr-6 dark:text-white" style={{ float: 'left', marginTop: 17, width: 15 }}>
+                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white">
+                  <div className="reservoir-h6 mr-6 dark:text-white">
                     {index + 1}
                   </div>
                   <Link href={tokenHref}>
                     <a className="flex items-center gap-2">
                       <img
                         src={optimizeImage(image, 140)}
-                        className="h-[56px] w-[56px] rounded-lg border border-gray-300 object-cover"
+                        className="h-[56px] w-[56px] rounded-full object-cover"
                       />
                       <div
                         className={`reservoir-h6 overflow-hidden truncate whitespace-nowrap dark:text-white ${
-                          isSmallDevice ? 'max-w-[195px]' : ''
+                          isSmallDevice ? 'max-w-[140px]' : ''
                         }`}
                       >
                         {name}
@@ -114,7 +113,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                           ? days30
                           : days1
                       }
-                      maximumFractionDigits={2}
                     />
                     <PercentageChange
                       value={

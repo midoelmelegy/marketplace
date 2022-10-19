@@ -1,5 +1,5 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
-import ConnectWallets from './ConnectWallets'
+import ConnectWallet from './ConnectWallet'
 import HamburgerMenu from './HamburgerMenu'
 import dynamic from 'next/dynamic'
 import { paths } from '@reservoir0x/reservoir-kit-client'
@@ -144,7 +144,7 @@ const Navbar: FC = () => {
       <CartMenu />
       <HamburgerMenu externalLinks={externalLinks} />
       <div className="z-10 ml-auto hidden shrink-0 md:flex md:gap-2">
-        <ConnectWallets />
+        <ConnectWallet />
         <ThemeSwitcher />
       </div>
     </nav>

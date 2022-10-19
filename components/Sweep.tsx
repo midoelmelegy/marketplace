@@ -374,7 +374,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                   </div>
                   {!DISABLE_POWERED_BY_RESERVOIR && (
                     <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[639px]">
-                      <Link href="https://www.seaport.market/">
+                      <Link href="https://reservoirprotocol.github.io/">
                         <a
                           className="reservoir-tiny flex gap-2 dark:text-white"
                           target="_blank"
@@ -384,8 +384,8 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                             alt="Reservoir Watermark"
                             src={
                               !!DARK_MODE
-                              ? `/seaport_watermark_dark.svg`
-                              : `/seaport_watermark_light.svg`
+                                ? `/reservoir_watermark_dark.svg`
+                                : `/reservoir_watermark_light.svg`
                             }
                           />
                         </a>

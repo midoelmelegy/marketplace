@@ -71,21 +71,3 @@ model-viewer {
 .markdown-support a {
   text-decoration: underline;
 }
-
-@media screen and (max-width: 770px) {
-  .medium-screen-extra-padding {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-  }
-}
-
-@media screen and (max-width: 420px) {
-  .small-screen-no-padding {
-    padding-left: 0rem !important;
-    padding-right: 0rem !important;
-  }
-  .small-screen-extra-padding {
-    padding-left: 1.5rem !important;
-    padding-right: 1.5rem !important;
-  }
-}

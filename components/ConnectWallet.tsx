@@ -11,7 +11,6 @@ import EthAccount from './EthAccount'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import Link from 'next/link'
 import { HiOutlineLogout } from 'react-icons/hi'
-import { FaRegUserCircle } from 'react-icons/fa'
 import FormatEth from './FormatEth'
 import ConnectWalletModal from './ConnectWalletModal'
 import { GlobalContext } from 'context/GlobalState'
@@ -61,7 +60,6 @@ const ConnectWallet: FC = () => {
             <DropdownMenu.Item asChild>
               <a className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
                 Portfolio
-                <FaRegUserCircle className="h-6 w-7" />
               </a>
             </DropdownMenu.Item>
           </Link>
@@ -81,7 +79,7 @@ const ConnectWallet: FC = () => {
         </div>
         {!DISABLE_POWERED_BY_RESERVOIR && (
           <div className="group mx-auto flex w-full cursor-pointer items-center justify-center gap-3 rounded-b-2xl bg-neutral-100  py-4 px-4 outline-none  transition dark:bg-neutral-800 ">
-            <Link href="https://www.seaport.market/">
+            <Link href="https://reservoirprotocol.github.io/">
               <a
                 className="reservoir-tiny flex gap-2 dark:text-white"
                 target="_blank"
@@ -90,8 +88,8 @@ const ConnectWallet: FC = () => {
                 <img
                   src={
                     !!DARK_MODE
-                      ? `/seaport_watermark_dark.svg`
-                      : `/seaport_watermark_light.svg`
+                      ? `/reservoir_watermark_dark.svg`
+                      : `/reservoir_watermark_light.svg`
                   }
                 />
               </a>
