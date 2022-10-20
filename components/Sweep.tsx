@@ -327,7 +327,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                                 token?.market?.floorAsk?.price?.amount?.native
                               }
                               maximumFractionDigits={4}
-                              logoWidth={7}
+                              logoWidth={16}
                             />
                           </div>
                         </div>
@@ -342,7 +342,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                           <FormatEth
                             amount={sweepTotal}
                             maximumFractionDigits={4}
-                            logoWidth={7}
+                            logoWidth={16}
                           />
                         </div>
                         {usdConversion && (
