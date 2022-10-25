@@ -13,8 +13,8 @@ import Link from 'next/link'
 import { HiOutlineLogout } from 'react-icons/hi'
 import { FaRegUserCircle } from 'react-icons/fa'
 import FormatEth from './FormatEth'
+import ConnectWalletModal from './ConnectWalletModal'
 import { GlobalContext } from 'context/GlobalState'
-import ConnectWalletButton from 'components/ConnectWalletButton'
 
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 const DISABLE_POWERED_BY_RESERVOIR =
@@ -29,7 +29,9 @@ const ConnectWallet: FC = () => {
   const wallet = connectors[0]
   const { dispatch } = useContext(GlobalContext)
 
-  if (!account.isConnected) return <ConnectWalletButton />
+  if (account.isConnecting) return null
+
+  if (!account.isConnected) return <ConnectWalletModal />
 
   return (
     <DropdownMenu.Root>
