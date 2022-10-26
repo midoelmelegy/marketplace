@@ -82,18 +82,18 @@ const Home: NextPage<Props> = ({ fallback }) => {
         {description}
         {image}
       </Head>
-      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
-        <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
-      </header>
-      <div className="col-span-full px-6 md:px-16">
-        <div className="mb-9 flex w-full items-center justify-between">
-          <div className="reservoir-h4 dark:text-white">
-            Trending
+      <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
+                  <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
+          </header>
+          <div className="col-span-full small-screen-no-padding md:px-16">
+            <div className="mb-9 flex w-full items-center justify-between">
+              <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
+                Trending
+              </div>
+              {!isSmallDevice && <SortTrendingCollections />}
+            </div>
+            <TrendingCollectionTable fallback={fallback} />
           </div>
-          {!isSmallDevice && <SortTrendingCollections />}
-        </div>
-        <TrendingCollectionTable fallback={fallback} />
-      </div>
     </Layout>
   )
 }
