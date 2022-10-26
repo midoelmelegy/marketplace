@@ -31,7 +31,7 @@ const ConnectWalletNavbar: FC<Props> = ({ className }) => {
                 <button
                   onClick={openConnectModal}
                   type="button"
-                  className={`btn-primary-fill dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4 ${className}`}
+                  className={`z-10 block p-1.5 ${className}`}
                 >
                  <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} />
                 </button>
