@@ -8,7 +8,6 @@ import { formatNumber } from 'lib/numbers'
 import { useRouter } from 'next/router'
 import { PercentageChange } from './hero/HeroStats'
 import { useMediaQuery } from '@react-hookz/web'
-import { CollectionData } from 'context/CollectionData'
 import useCoinConversion from 'hooks/useCoinConversion'
 import calculateMarketCap from 'lib/calculateMarketCap'
 
