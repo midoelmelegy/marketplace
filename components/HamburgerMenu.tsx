@@ -1,10 +1,13 @@
 import * as Dialog from '@radix-ui/react-dialog'
-import ConnectWalletButton from 'components/ConnectWalletButton'
+import ConnectWalletNavbar from 'components/ConnectWalletNavbar'
 import NavbarLogo from 'components/navbar/NavbarLogo'
 import Link from 'next/link'
 import { FC, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { HiOutlineLogout, HiX } from 'react-icons/hi'
+import { FaRegUserCircle } from 'react-icons/fa'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
+import { HiOutlineLogout, HiX, HiOutlineUserCircle } from 'react-icons/hi'
 import {
   useAccount,
   useConnect,
@@ -96,6 +99,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
                 onClick={() => setOpen(false)}
               >
                 Portfolio
+                <FaRegUserCircle className="h-6 w-7" />
               </a>
             </Link>
 
@@ -110,7 +114,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
           </>
         ) : (
           <div className="mt-12 px-4">
-            <ConnectWalletButton className="w-full" />
+            <ConnectWalletNavbar className="w-full" />
           </div>
         )}
       </Dialog.Content>

@@ -20,7 +20,7 @@ const CollectionInfo: FC<Props> = ({ collection, token }) => {
           <img
             src={optimizeImage(collection?.image as string, 50)}
             alt="collection avatar"
-            className="h-9 w-9 rounded-full"
+            className="h-9 w-9 rounded-lg border border-gray-300"
           />
           <span className="reservoir-h6 font-headings dark:text-white">
             {token?.collection?.name}

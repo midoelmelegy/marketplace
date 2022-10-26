@@ -13,14 +13,15 @@ import Link from 'next/link'
 import { HiOutlineLogout } from 'react-icons/hi'
 import { FaRegUserCircle } from 'react-icons/fa'
 import FormatEth from './FormatEth'
-import ConnectWalletNavbar from './ConnectWalletNavbar'
 import { GlobalContext } from 'context/GlobalState'
+import ConnectWalletNavbar from 'components/ConnectWalletNavbar'
+import useMounted from 'hooks/useMounted'
 
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 const DISABLE_POWERED_BY_RESERVOIR =
   process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
 
-const ConnectWallet: FC = () => {
+const ConnectWallets: FC = () => {
   const account = useAccount()
   const { data: ensAvatar } = useEnsAvatar({ addressOrName: account?.address })
   const { data: ensName } = useEnsName({ address: account?.address })
@@ -28,8 +29,11 @@ const ConnectWallet: FC = () => {
   const { disconnect } = useDisconnect()
   const wallet = connectors[0]
   const { dispatch } = useContext(GlobalContext)
+  const isMounted = useMounted()
 
-  if (account.isConnecting) return null
+  if (!isMounted) {
+    return null
+  }
 
   if (!account.isConnected) return <ConnectWalletNavbar />
 
@@ -59,8 +63,8 @@ const ConnectWallet: FC = () => {
           </div>
           <Link href={`/address/${account.address}`}>
             <DropdownMenu.Item asChild>
-            <a className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
-                Account
+              <a className="group flex w-full cursor-pointer items-center justify-between rounded px-4 py-3 outline-none transition hover:bg-neutral-100 focus:bg-neutral-100 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800">
+                Portfolio
                 <FaRegUserCircle className="h-6 w-7" />
               </a>
             </DropdownMenu.Item>
@@ -90,8 +94,8 @@ const ConnectWallet: FC = () => {
                 <img
                   src={
                     !!DARK_MODE
-                    ? `/seaport_watermark_dark.svg`
-                    : `/seaport_watermark_light.svg`
+                      ? `/seaport_watermark_dark.svg`
+                      : `/seaport_watermark_light.svg`
                   }
                 />
               </a>
@@ -103,7 +107,7 @@ const ConnectWallet: FC = () => {
   )
 }
 
-export default ConnectWallet
+export default ConnectWallets
 
 type Props = {
   address: string

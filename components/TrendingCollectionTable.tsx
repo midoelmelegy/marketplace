@@ -35,8 +35,8 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
     : []
 
   const columns = isSmallDevice
-    ? ['Collection', 'Floor Price']
-    : ['Collection', 'Volume', 'Floor Price', 'Supply']
+    ? ['COLLECTION', 'FLOOR PRICE']
+    : ['COLLECTION', 'VOLUME', 'FLOOR PRICE', 'SUPPLY']
 
   return (
     <div className="mb-11 overflow-x-auto">
@@ -89,11 +89,11 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                     <a className="flex items-center gap-2">
                       <img
                         src={optimizeImage(image, 140)}
-                        className="h-[56px] w-[56px] rounded-full object-cover"
+                        className="h-[56px] w-[56px] rounded-lg border border-gray-300 object-cover"
                       />
                       <div
                         className={`reservoir-h6 overflow-hidden truncate whitespace-nowrap dark:text-white ${
-                          isSmallDevice ? 'max-w-[140px]' : ''
+                          isSmallDevice ? 'max-w-[180px]' : ''
                         }`}
                       >
                         {name}
