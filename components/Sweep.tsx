@@ -248,7 +248,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
           {steps ? (
             <ModalCard title="Buy Now" loading={waitingTx} steps={steps} />
           ) : (
-            <Dialog.Content className="fixed inset-0 z-10 bg-[#000000b6] px-8">
+            <Dialog.Content className="fixed inset-0 z-[10000] bg-[#000000b6] px-8">
               <div className="fixed top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2 transform">
                 <div className="px-5">
                   <div
@@ -327,7 +327,6 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                                 token?.market?.floorAsk?.price?.amount?.native
                               }
                               maximumFractionDigits={4}
-                              logoWidth={16}
                             />
                           </div>
                         </div>
@@ -342,7 +341,6 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                           <FormatEth
                             amount={sweepTotal}
                             maximumFractionDigits={4}
-                            logoWidth={16}
                           />
                         </div>
                         {usdConversion && (
@@ -374,7 +372,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                   </div>
                   {!DISABLE_POWERED_BY_RESERVOIR && (
                     <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[639px]">
-                      <Link href="https://www.seaport.market/">
+                      <Link href="https://reservoirprotocol.github.io/">
                         <a
                           className="reservoir-tiny flex gap-2 dark:text-white"
                           target="_blank"
@@ -384,8 +382,8 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                             alt="Reservoir Watermark"
                             src={
                               !!DARK_MODE
-                              ? `/seaport_watermark_dark.svg`
-                              : `/seaport_watermark_light.svg`
+                                ? `/reservoir_watermark_dark.svg`
+                                : `/reservoir_watermark_light.svg`
                             }
                           />
                         </a>
