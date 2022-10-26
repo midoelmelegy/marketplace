@@ -130,7 +130,7 @@ const SearchCollections: FC<Props> = ({
                 ? 'ml-[72px] h-[72px] w-full outline-none dark:bg-black'
                 : `reservoir-label-l input-primary-outline w-full pl-9 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:ring-primary-900 dark:placeholder:text-neutral-400  dark:focus:ring-4 lg:w-[447px]`
             }
-            placeholder="Search collections"
+            placeholder="Search for a collection"
             {...getInputProps()}
           />
           {typeof inputValue === 'string' && inputValue !== '' && (
@@ -192,7 +192,7 @@ const SearchCollections: FC<Props> = ({
                             'https://via.placeholder.com/30'
                           }
                           alt={`${collection?.name}'s logo.`}
-                          className="h-9 w-9 shrink-0 overflow-hidden rounded-lg"
+                          className="h-9 w-9 shrink-0 overflow-hidden rounded-full"
                         />
                         <span className="reservoir-subtitle ml-2 overflow-hidden text-ellipsis dark:text-white">
                           {collection?.name}
@@ -250,7 +250,7 @@ const SearchCollections: FC<Props> = ({
                         collection?.image ?? 'https://via.placeholder.com/30'
                       }
                       alt={`${collection?.name}'s logo.`}
-                      className="h-9 w-9 shrink-0 overflow-hidden rounded-lg"
+                      className="h-9 w-9 shrink-0 overflow-hidden rounded-full"
                     />
                     <span className="reservoir-subtitle ml-2 overflow-hidden text-ellipsis dark:text-white">
                       {collection?.name}

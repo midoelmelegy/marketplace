@@ -16,7 +16,7 @@ const SearchMenu: FC<Props> = ({ communityId, initialResults }) => {
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger className="z-10 block p-1.5">
-        <FiSearch className={`h-[32px] w-[32px]`} />
+        <FiSearch className={`h-[18px] w-[18px]`} />
       </Dialog.Trigger>
 
       <Dialog.Content className="fixed inset-0 z-20 transform bg-white shadow-md dark:bg-black">
