@@ -6,8 +6,6 @@ import { FC, useState } from 'react'
 import { FiMenu } from 'react-icons/fi'
 import { HiOutlineLogout, HiX } from 'react-icons/hi'
 import { FaRegUserCircle } from 'react-icons/fa'
-import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
-import { HiOutlineLogout, HiX, HiOutlineUserCircle } from 'react-icons/hi'
 import {
   useAccount,
   useConnect,
