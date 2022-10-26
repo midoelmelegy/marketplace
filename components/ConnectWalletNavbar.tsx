@@ -1,6 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 import { FC } from 'react'
 import { useAccount } from 'wagmi'
+import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
 
 type Props = {
   className?: HTMLButtonElement['className']
