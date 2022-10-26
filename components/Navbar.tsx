@@ -1,5 +1,5 @@
 import { FC, ReactElement, useEffect, useState } from 'react'
-import ConnectWallet from './ConnectWallet'
+import ConnectWallets from './ConnectWallets'
 import HamburgerMenu from './HamburgerMenu'
 import dynamic from 'next/dynamic'
 import { paths } from '@reservoir0x/reservoir-kit-client'
@@ -9,7 +9,6 @@ import ThemeSwitcher from './ThemeSwitcher'
 import CartMenu from './CartMenu'
 import SearchMenu from './SearchMenu'
 import { useMediaQuery } from '@react-hookz/web'
-import useMounted from 'hooks/useMounted'
 
 const SearchCollections = dynamic(() => import('./SearchCollections'))
 const CommunityDropdown = dynamic(() => import('./CommunityDropdown'))
@@ -35,7 +34,6 @@ function getInitialSearchHref() {
 }
 
 const Navbar: FC = () => {
-  const isMounted = useMounted()
   const [showLinks, setShowLinks] = useState(true)
   const [filterComponent, setFilterComponent] = useState<ReactElement | null>(
     null
@@ -117,12 +115,8 @@ const Navbar: FC = () => {
     }
   }, [filterableCollection, showDesktopSearch])
 
-  if (!isMounted) {
-    return null
-  }
-
   return (
-    <nav className="sticky top-0 z-[1000] col-span-full flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
+    <nav className="sticky top-0 z-[1000] col-span-full mb-[10px] flex items-center justify-between gap-2 border-b border-[#D4D4D4] bg-white px-6 py-4 dark:border-neutral-600 dark:bg-black md:gap-3 md:py-6 md:px-16">
       <NavbarLogo className="z-10 max-w-[300px]" />
       {showLinks && (
         <div className="z-10 ml-12 hidden items-center gap-11 lg:flex">
@@ -158,7 +152,7 @@ const Navbar: FC = () => {
             </div>
           )}
           <CartMenu />
-          <ConnectWallet />
+          <ConnectWallets />
           <ThemeSwitcher />
         </div>
       )}

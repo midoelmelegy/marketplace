@@ -18,9 +18,8 @@ import { Collection } from 'types/reservoir'
 import { formatDollar } from 'lib/numbers'
 import useCoinConversion from 'hooks/useCoinConversion'
 import SwapCartModal from 'components/SwapCartModal'
+import ConnectWalletModal from 'components/ConnectWalletModal'
 import { FaShoppingCart } from 'react-icons/fa'
-import ConnectWalletButton from 'components/ConnectWalletButton'
-import useMounted from 'hooks/useMounted'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
@@ -44,7 +43,6 @@ if (CURRENCIES) {
 }
 
 const PriceData: FC<Props> = ({ details, collection }) => {
-  const isMounted = useMounted()
   const [cartTokens, setCartTokens] = useRecoilState(recoilCartTokens)
   const tokensMap = useRecoilValue(getTokensMap)
   const cartCurrency = useRecoilValue(getCartCurrency)
@@ -70,10 +68,6 @@ const PriceData: FC<Props> = ({ details, collection }) => {
     token?.market?.floorAsk?.price?.currency?.symbol ? 'usd' : undefined,
     token?.market?.floorAsk?.price?.currency?.symbol
   )
-
-  if (!isMounted) {
-    return null
-  }
 
   const topBidUsdPrice =
     topBidUsdConversion && token?.market?.topBid?.price?.amount?.decimal
@@ -180,7 +174,7 @@ const PriceData: FC<Props> = ({ details, collection }) => {
         </div>
         <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2">
           {account.isDisconnected ? (
-            <ConnectWalletButton className="w-full" />
+            <ConnectWalletModal />
           ) : (
             <>
               {isOwner && (

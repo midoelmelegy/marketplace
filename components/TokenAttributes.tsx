@@ -10,7 +10,6 @@ import {
 import { formatNumber } from 'lib/numbers'
 import * as Accordion from '@radix-ui/react-accordion'
 import { StyledChevron, StyledContent } from './radix/Accordion'
-import useMounted from 'hooks/useMounted'
 
 type Props = {
   token?: TokenDetails
@@ -19,13 +18,9 @@ type Props = {
 }
 
 const TokenAttributes: FC<Props> = ({ token, collection, isOwner }) => {
-  const isMounted = useMounted()
-
-  if (!isMounted) {
-    return null
-  }
-
   if (token?.attributes?.length === 0) return null
+
+  if (typeof window === 'undefined') return null
 
   return (
     <div className="col-span-full md:col-span-4 lg:col-span-5 lg:col-start-2">

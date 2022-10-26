@@ -6,7 +6,13 @@ import {
   NextPage,
 } from 'next'
 import { useRouter } from 'next/router'
-import { useAccount, useNetwork, useEnsName, useEnsAvatar } from 'wagmi'
+import {
+  useAccount,
+  useNetwork,
+  useSigner,
+  useEnsName,
+  useEnsAvatar,
+} from 'wagmi'
 import * as Tabs from '@radix-ui/react-tabs'
 import { toggleOnItem } from 'lib/router'
 import UserOffersTable from 'components/tables/UserOffersTable'
@@ -22,7 +28,6 @@ import useSearchCommunity from 'hooks/useSearchCommunity'
 import { truncateAddress } from 'lib/truncateText'
 import { paths, setParams } from '@reservoir0x/reservoir-kit-client'
 import UserActivityTab from 'components/tables/UserActivityTab'
-import useMounted from 'hooks/useMounted'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
@@ -38,7 +43,6 @@ const metadata = {
 }
 
 const Address: NextPage<Props> = ({ address, fallback }) => {
-  const isMounted = useMounted()
   const router = useRouter()
   const accountData = useAccount()
 
@@ -77,10 +81,6 @@ const Address: NextPage<Props> = ({ address, fallback }) => {
   if (!CHAIN_ID) {
     console.debug({ CHAIN_ID })
     return <div>There was an error</div>
-  }
-
-  if (!isMounted) {
-    return null
   }
 
   const setToast: (data: ComponentProps<typeof Toast>['data']) => any = (
