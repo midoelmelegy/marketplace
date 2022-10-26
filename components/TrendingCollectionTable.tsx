@@ -8,8 +8,6 @@ import { formatNumber } from 'lib/numbers'
 import { useRouter } from 'next/router'
 import { PercentageChange } from './hero/HeroStats'
 import { useMediaQuery } from '@react-hookz/web'
-import useCoinConversion from 'hooks/useCoinConversion'
-import calculateMarketCap from 'lib/calculateMarketCap'
 
 type Props = {
   fallback: {
@@ -20,7 +18,6 @@ type Props = {
 type Volumes = '1DayVolume' | '7DayVolume' | '30DayVolume'
 
 const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
-  const usdConversion = useCoinConversion('usd', 'ETH')
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
   const { collections, ref } = usePaginatedCollections(
@@ -39,7 +36,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
 
   const columns = isSmallDevice
     ? ['COLLECTION', 'FLOOR']
-    : ['COLLECTION', 'VOLUME', 'FLOOR', 'MARKET CAP', 'SUPPLY']
+    : ['COLLECTION', 'VOLUME', 'FLOOR', 'SUPPLY']
 
   return (
     <div className="mb-11 overflow-x-auto">
@@ -84,9 +81,8 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                 className="group h-[88px] border-b border-neutral-300 dark:border-neutral-600 dark:text-white"
               >
                 {/* COLLECTION */}
-                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white"
-                    style={{ maxWidth: 400, textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', display: 'block' }}>
-                  <div className="reservoir-h6 mr-6 dark:text-white" style={{ float: 'left', marginTop: 17, width: 15 }}>
+                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white">
+                  <div className="reservoir-h6 mr-6 dark:text-white">
                     {index + 1}
                   </div>
                   <Link href={tokenHref}>
@@ -117,7 +113,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                           ? days30
                           : days1
                       }
-                      maximumFractionDigits={2}
                     />
                     <PercentageChange
                       value={
@@ -144,15 +139,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                     }
                   />
                 </td>
-
-                {/* MARKET CAP */}
-                {!isSmallDevice && (
-                  <td className="reservoir-body whitespace-nowrap px-6 py-4 dark:text-white">
-                    {!CollectionData[contract as keyof typeof CollectionData].skipMarketCap ?
-                    calculateMarketCap(Number(supply), Number(floorPrice), CollectionData[contract as keyof typeof CollectionData]?.marketCapMultiplier, usdConversion).displayMarket :
-                    '-'}
-                  </td>
-                )}
 
                 {/* SUPPLY */}
                 {!isSmallDevice && (
