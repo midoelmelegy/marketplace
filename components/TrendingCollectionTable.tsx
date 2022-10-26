@@ -81,8 +81,9 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                 className="group h-[88px] border-b border-neutral-300 dark:border-neutral-600 dark:text-white"
               >
                 {/* COLLECTION */}
-                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white">
-                  <div className="reservoir-h6 mr-6 dark:text-white">
+                <td className="reservoir-body flex items-center gap-4 whitespace-nowrap px-6 py-4 dark:text-white"
+                    style={{ maxWidth: 400, textOverflow: 'ellipsis', whiteSpace: 'nowrap', overflow: 'hidden', display: 'block' }}>
+                  <div className="reservoir-h6 mr-6 dark:text-white" style={{ float: 'left', marginTop: 17, width: 15 }}>
                     {index + 1}
                   </div>
                   <Link href={tokenHref}>
