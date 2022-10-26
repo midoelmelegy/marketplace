@@ -93,7 +93,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                       />
                       <div
                         className={`reservoir-h6 overflow-hidden truncate whitespace-nowrap dark:text-white ${
-                          isSmallDevice ? 'max-w-[180px]' : ''
+                          isSmallDevice ? 'max-w-[195px]' : ''
                         }`}
                       >
                         {name}
