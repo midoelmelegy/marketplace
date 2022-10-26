@@ -379,7 +379,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                         >
                           Powered by{' '}
                           <img
-                            alt="Reservoir Watermark"
+                            alt="Seaport Watermark"
                             src={
                               !!DARK_MODE
                                 ? `/seaport_watermark_dark.svg`
