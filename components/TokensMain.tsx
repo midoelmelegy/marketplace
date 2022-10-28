@@ -161,10 +161,20 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
         />
         <div className="col-span-full mx-6 mt-4 sm:col-end-[-1] md:col-start-4">
           <div className="mb-10 hidden items-center justify-between md:flex">
-          <div className="mb-10 hidden items-center justify-between md:flex">
-            <div>
-              <AttributesFlex />
-              <ExploreFlex />
+            <div className="flex items-center gap-6">
+              {!!tokenCount && tokenCount > 0 && (
+                <>
+                  <div>{formatNumber(tokenCount)} items</div>
+
+                  <div className="h-9 w-px bg-gray-300 dark:bg-neutral-600"></div>
+                  <div className="flex items-center gap-1">
+                    <FormatEth
+                      amount={stats?.data?.stats?.market?.floorAsk?.price}
+                    />{' '}
+                    floor price
+                  </div>
+                </>
+              )}
             </div>
             <div className="flex gap-4">
               {router.query?.attribute_key ||
@@ -175,9 +185,9 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                 </>
               ) : (
                 <SortMenu setSize={tokens.setSize} />
-              )}
+              ) : null}
               <button
-                className="btn-primary-outline dark:text-white"
+                className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                 title="Refresh collection"
                 disabled={refreshLoading}
                 onClick={() => refreshCollection(collectionId)}
@@ -190,58 +200,24 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
               </button>
             </div>
           </div>
+          <AttributesFlex className="mb-10 flex flex-wrap gap-3" />
+          <ExploreFlex />
           {router.query?.attribute_key || router.query?.attribute_key === '' ? (
             <ExploreTokens
               attributes={collectionAttributes}
               viewRef={refCollectionAttributes}
             />
-          ) : (<div className="mb-10 hidden items-center justify-between md:flex">
-          <div>
-            <AttributesFlex />
-            <ExploreFlex />
-          </div>
-          <div className="flex gap-4">
-            {router.query?.attribute_key ||
-            router.query?.attribute_key === '' ? (
-              <>
-                <SortMenuExplore setSize={collectionAttributes.setSize} />
-                <ViewMenu />
-              </>
-            ) : (
-              <SortMenu setSize={tokens.setSize} />
-            )}
-            <button
-              className="btn-primary-outline dark:text-white"
-              title="Refresh collection"
-              disabled={refreshLoading}
-              onClick={() => refreshCollection(collectionId)}
-            >
-              <FiRefreshCcw
-                className={`h-5 w-5 ${
-                  refreshLoading ? 'animate-spin-reverse' : ''
-                }`}
-              />
-            </button>
-          </div>
+          ) : (
+            <TokensGrid
+              tokens={tokens}
+              viewRef={refTokens}
+              collectionImage={collection?.image as string}
+            />
+          )}
         </div>
-        {router.query?.attribute_key || router.query?.attribute_key === '' ? (
-          <ExploreTokens
-            attributes={collectionAttributes}
-            viewRef={refCollectionAttributes}
-          />
-        ) : (
-          <TokensGrid
-            tokens={tokens}
-            viewRef={refTokens}
-            collectionImage={
-              collection.data?.collection?.metadata?.imageUrl as string
-            }
-          />
-        )}
       </div>
-    </div>
-  </>
-)
+    </>
+  )
 }
 
 export default TokensMain
