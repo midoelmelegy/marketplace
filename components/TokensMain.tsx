@@ -195,17 +195,53 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
               attributes={collectionAttributes}
               viewRef={refCollectionAttributes}
             />
-          ) : (
-            <TokensGrid
-              tokens={tokens}
-              viewRef={refTokens}
-              collectionImage={collection?.image as string}
-            />
-          )}
+          ) : (<div className="mb-10 hidden items-center justify-between md:flex">
+          <div>
+            <AttributesFlex />
+            <ExploreFlex />
+          </div>
+          <div className="flex gap-4">
+            {router.query?.attribute_key ||
+            router.query?.attribute_key === '' ? (
+              <>
+                <SortMenuExplore setSize={collectionAttributes.setSize} />
+                <ViewMenu />
+              </>
+            ) : (
+              <SortMenu setSize={tokens.setSize} />
+            )}
+            <button
+              className="btn-primary-outline dark:text-white"
+              title="Refresh collection"
+              disabled={refreshLoading}
+              onClick={() => refreshCollection(collectionId)}
+            >
+              <FiRefreshCcw
+                className={`h-5 w-5 ${
+                  refreshLoading ? 'animate-spin-reverse' : ''
+                }`}
+              />
+            </button>
+          </div>
         </div>
+        {router.query?.attribute_key || router.query?.attribute_key === '' ? (
+          <ExploreTokens
+            attributes={collectionAttributes}
+            viewRef={refCollectionAttributes}
+          />
+        ) : (
+          <TokensGrid
+            tokens={tokens}
+            viewRef={refTokens}
+            collectionImage={
+              collection.data?.collection?.metadata?.imageUrl as string
+            }
+          />
+        )}
       </div>
-    </>
-  )
+    </div>
+  </>
+)
 }
 
 export default TokensMain
