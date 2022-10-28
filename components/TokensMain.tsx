@@ -124,7 +124,7 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
   const title = metaTitle ? (
     <title>{metaTitle}</title>
   ) : (
-    <title>{collection?.name} | Reservoir Market</title>
+    <title>{collection?.name} | Seaport Market</title>
   )
   const description = metaDescription ? (
     <meta name="description" content={metaDescription} />
@@ -187,7 +187,7 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                 <SortMenu setSize={tokens.setSize} />
               )}
               <button
-                className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                className="btn-primary-outline dark:text-white"
                 title="Refresh collection"
                 disabled={refreshLoading}
                 onClick={() => refreshCollection(collectionId)}
@@ -200,8 +200,6 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
               </button>
             </div>
           </div>
-          <AttributesFlex className="mb-10 flex flex-wrap gap-3" />
-          <ExploreFlex />
           {router.query?.attribute_key || router.query?.attribute_key === '' ? (
             <ExploreTokens
               attributes={collectionAttributes}
@@ -209,9 +207,12 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
             />
           ) : (
             <TokensGrid
+              tokenCount={statsObj.count}
               tokens={tokens}
               viewRef={refTokens}
-              collectionImage={collection?.image as string}
+              collectionImage={
+                collection.data?.collection?.metadata?.imageUrl as string
+              }
             />
           )}
         </div>
