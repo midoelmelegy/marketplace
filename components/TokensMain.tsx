@@ -153,29 +153,9 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
       <Hero fallback={fallback} collectionId={collectionId} />
       <div className="col-span-full grid grid-cols-4 gap-x-4 md:grid-cols-8 lg:grid-cols-12 3xl:grid-cols-16 4xl:grid-cols-21">
         <hr className="col-span-full border-gray-300 dark:border-neutral-600" />
-        <Sidebar
-          attributes={attributes.data}
-          refreshData={() => {
-            tokens.setSize(1)
-          }}
-        />
+        <Sidebar attributes={attributes} setTokensSize={tokens.setSize} />
         <div className="col-span-full mx-6 mt-4 sm:col-end-[-1] md:col-start-4">
           <div className="mb-10 hidden items-center justify-between md:flex">
-            <div className="flex items-center gap-6">
-              {!!tokenCount && tokenCount > 0 && (
-                <>
-                  <div>{formatNumber(tokenCount)} items</div>
-
-                  <div className="h-9 w-px bg-gray-300 dark:bg-neutral-600"></div>
-                  <div className="flex items-center gap-1">
-                    <FormatEth
-                      amount={stats?.data?.stats?.market?.floorAsk?.price}
-                    />{' '}
-                    floor price
-                  </div>
-                </>
-              )}
-            </div>
             <div>
               <AttributesFlex />
               <ExploreFlex />
@@ -191,7 +171,7 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                 <SortMenu setSize={tokens.setSize} />
               )}
               <button
-                className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                className="btn-primary-outline dark:text-white"
                 title="Refresh collection"
                 disabled={refreshLoading}
                 onClick={() => refreshCollection(collectionId)}
@@ -211,9 +191,12 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
             />
           ) : (
             <TokensGrid
+              tokenCount={statsObj.count}
               tokens={tokens}
               viewRef={refTokens}
-              collectionImage={collection?.image as string}
+              collectionImage={
+                collection.data?.collection?.metadata?.imageUrl as string
+              }
             />
           )}
         </div>
