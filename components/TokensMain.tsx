@@ -185,7 +185,7 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                 </>
               ) : (
                 <SortMenu setSize={tokens.setSize} />
-              ) : null}
+              )}
               <button
                 className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
                 title="Refresh collection"
