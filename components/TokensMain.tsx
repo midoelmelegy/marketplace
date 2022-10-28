@@ -173,10 +173,13 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                     />{' '}
                     floor price
                   </div>
-                </>
-              )}
+                  <div>
               <AttributesFlex />
               <ExploreFlex />
+            </div>
+                </>
+              )}
+              
             </div>
             <div className="flex gap-4">
               {router.query?.attribute_key ||
