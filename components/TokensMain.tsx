@@ -175,6 +175,8 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                   </div>
                 </>
               )}
+              <AttributesFlex />
+              <ExploreFlex />
             </div>
             <div className="flex gap-4">
               {router.query?.attribute_key ||
@@ -200,8 +202,6 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
               </button>
             </div>
           </div>
-          <AttributesFlex className="mb-10 flex flex-wrap gap-3" />
-          <ExploreFlex />
           {router.query?.attribute_key || router.query?.attribute_key === '' ? (
             <ExploreTokens
               attributes={collectionAttributes}
