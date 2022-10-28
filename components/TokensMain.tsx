@@ -11,6 +11,7 @@ import ExploreFlex from './ExploreFlex'
 import ExploreTokens from './ExploreTokens'
 import Hero from './Hero'
 import Sidebar from './Sidebar'
+import SortMenu from './SortMenu'
 import SortMenuExplore from './SortMenuExplore'
 import TokensGrid from './TokensGrid'
 import ViewMenu from './ViewMenu'
@@ -181,7 +182,9 @@ const TokensMain: FC<Props> = ({ collectionId, fallback, setToast }) => {
                 <>
                   <SortMenuExplore setSize={collectionAttributes.setSize} />
                   <ViewMenu />
-                </>
+                  </>
+              ) : (
+                <SortMenu setSize={tokens.setSize} />
               ) : null}
               <button
                 className="btn-primary-outline dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
