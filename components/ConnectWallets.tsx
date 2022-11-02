@@ -40,7 +40,8 @@ const ConnectWallets: FC = () => {
   if (!account.isConnected) return <ConnectWalletNavbar />
 
   return (
-    <DropdownMenu.Trigger className="btn-primary-outline rounded-full p-0 ml-auto border-transparent normal-case dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4">
+    <DropdownMenu.Root>
+      <DropdownMenu.Trigger className="btn-primary-outline rounded-full p-0 ml-auto border-transparent normal-case dark:border-neutral-600 dark:bg-neutral-900 dark:ring-primary-900 dark:focus:ring-4">
         <Avatar address={account.address} avatar={ensAvatar} size={40}/>
       </DropdownMenu.Trigger>
 
