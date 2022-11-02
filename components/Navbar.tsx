@@ -160,10 +160,7 @@ const Navbar: FC = () => {
               </div>
             )}
             <CartMenu />
-            {hasCommunityDropdown && themeSwitcherEnabled && !showDesktopSearch?
-              null
-              :
-            }
+            {hasCommunityDropdown && themeSwitcherEnabled && !showDesktopSearch}
             <ConnectWallets />
             <ThemeSwitcher />
           </div>
