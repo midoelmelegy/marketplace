@@ -127,12 +127,7 @@ const ActivityTable: FC<Props> = ({
                 onTypesChange(updatedTypes)
               }}
             >
-              <span>{filter}</span>
-              {isSelected && (
-                <div className="text-neutral-400">
-                  <FontAwesomeIcon icon={faClose} />
-                </div>
-              )}
+              {filter}
             </button>
           )
         })}
