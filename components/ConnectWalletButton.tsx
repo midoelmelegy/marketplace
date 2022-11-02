@@ -1,5 +1,4 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useMediaQuery } from '@react-hookz/web'
 import { FC } from 'react'
 import { useAccount } from 'wagmi'
 import { MdOutlineAccountBalanceWallet } from 'react-icons/md'
@@ -10,7 +9,6 @@ type Props = {
 
 const ConnectWalletButton: FC<Props> = ({ className }) => {
   const account = useAccount()
-  const isMobile = useMediaQuery('(max-width: 770px)')
   return (
     <ConnectButton.Custom>
       {({ openConnectModal, authenticationStatus, mounted }) => {
@@ -35,11 +33,7 @@ const ConnectWalletButton: FC<Props> = ({ className }) => {
                   type="button"
                   className={`btn-primary-fill dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4 ${className}`}
                 >
-                 {isMobile ?
-                    <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet
-                    :
-                    <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet
-                  }
+                 <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet
                 </button>
               )
             })()}
