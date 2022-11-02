@@ -36,8 +36,9 @@ const ConnectWalletNavbar: FC<Props> = ({ className }) => {
                   className={`z-10 block p-1.5 ${className}`}
                 >
                  {isMobile ?
-                    <span><MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /></span>
+                    <span></span>
                     :
+                    <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} />
                   }
                 </button>
               )
