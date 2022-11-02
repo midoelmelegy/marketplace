@@ -167,7 +167,6 @@ const Navbar: FC = () => {
             <ConnectWallets />
             <ThemeSwitcher />
           </div>
-        </div>
       )}
     </nav>
   )
