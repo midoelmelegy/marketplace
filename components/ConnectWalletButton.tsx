@@ -38,7 +38,7 @@ const ConnectWalletButton: FC<Props> = ({ className }) => {
                  {isMobile ?
                     <span><MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet</span>
                     :
-                    <MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} />  Connect Wallet
+                    <span><MdOutlineAccountBalanceWallet className={`h-[32px] w-[32px]`} /> Connect Wallet</span>
                   }
                 </button>
               )
