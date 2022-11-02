@@ -157,14 +157,16 @@ const Navbar: FC = () => {
           {!hasCommunityDropdown && !showDesktopSearch && (
             <div className="ml-auto flex">
               {filterComponent && filterComponent}
-            </div>
-          )}
-          <CartMenu />
+              </div>
+            )}
+            <CartMenu />
             {hasCommunityDropdown && themeSwitcherEnabled && !showDesktopSearch?
               null
               :
-          <ConnectWallets />
-          <ThemeSwitcher />
+            }
+            <ConnectWallets />
+            <ThemeSwitcher />
+          </div>
         </div>
       )}
     </nav>
