@@ -40,6 +40,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             desktopVariant ? 'hidden' : ''
           } ${mobileVariant ? 'block' : ''}`}
         />
+        <span className="font-bold text-3xl font-sans tracking-tight whitespace-nowrap">SesPort</span>
         <img
           src={desktopLogo}
           alt={logoAlt}
@@ -47,6 +48,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
         />
+        <span className="font-bold text-3xl font-sans tracking-tight whitespace-nowrap">SesPort</span>
         {chain?.testnet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]
