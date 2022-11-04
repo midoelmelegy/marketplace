@@ -7,6 +7,7 @@ const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
 const SOURCE_NAME = process.env.NEXT_PUBLIC_SOURCE_NAME
 const DESKTOP_NAVBAR_LOGO = process.env.NEXT_PUBLIC_DESKTOP_NAVBAR_LOGO
 const NAVBAR_LOGO_LINK = process.env.NEXT_PUBLIC_NAVBAR_LOGO_LINK
+const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 
 type Props = {
   variant?: 'desktop' | 'mobile' | undefined
