@@ -40,7 +40,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             desktopVariant ? 'hidden' : ''
           } ${mobileVariant ? 'block' : ''}`}
         />
-        <span className="reservoir-h1 text-center dark:text-white">SesPort</span>
+        <span className="reservoir-h3 text-center dark:text-white">SeaPort</span>
         <img
           src={desktopLogo}
           alt={logoAlt}
