@@ -30,8 +30,8 @@ import { formatDollar } from 'lib/numbers'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
-const DISABLE_POWERED_BY_RESERVOIR =
-  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
+const DISABLE_POWERED_BY_SEAPORT =
+  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_SEAPORT
 const API_BASE =
   process.env.NEXT_PUBLIC_RESERVOIR_API_BASE || 'https://api.reservoir.tools'
 
@@ -253,7 +253,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                 <div className="px-5">
                   <div
                     className={`mx-auto  border border-neutral-300 bg-white p-11 shadow-xl dark:border-neutral-600 dark:bg-black md:w-[639px] ${
-                      DISABLE_POWERED_BY_RESERVOIR
+                      DISABLE_POWERED_BY_SEAPORT
                         ? 'rounded-2xl'
                         : 'rounded-t-2xl'
                     }`}
@@ -370,7 +370,7 @@ const Sweep: FC<Props> = ({ tokens, collection, mutate, setToast }) => {
                       Buy Now
                     </button>
                   </div>
-                  {!DISABLE_POWERED_BY_RESERVOIR && (
+                  {!DISABLE_POWERED_BY_SEAPORT && (
                     <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[639px]">
                       <Link href="https://www.seaport.market/">
                         <a

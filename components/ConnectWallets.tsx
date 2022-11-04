@@ -20,8 +20,8 @@ import Avatar from './Avatar'
 import { truncateAddress, truncateEns } from 'lib/truncateText'
 
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
-const DISABLE_POWERED_BY_RESERVOIR =
-  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
+const DISABLE_POWERED_BY_SEAPORT =
+  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_SEAPORT
 
 const ConnectWallets: FC = () => {
   const account = useAccount()
@@ -48,7 +48,7 @@ const ConnectWallets: FC = () => {
       <DropdownMenu.Content align="end" sideOffset={6}>
         <div
           className={`w-48 space-y-1  bg-white px-1.5 py-2 shadow-md radix-side-bottom:animate-slide-down dark:bg-neutral-900 md:w-56 ${
-            DISABLE_POWERED_BY_RESERVOIR ? 'rounded' : 'rounded-t'
+            DISABLE_POWERED_BY_SEAPORT ? 'rounded' : 'rounded-t'
           }`}
         >
           
@@ -86,7 +86,7 @@ const ConnectWallets: FC = () => {
             </button>
           </DropdownMenu.Item>
         </div>
-        {!DISABLE_POWERED_BY_RESERVOIR && (
+        {!DISABLE_POWERED_BY_SEAPORT && (
           <div className="group mx-auto flex w-full cursor-pointer items-center justify-center gap-3 rounded-b-2xl bg-neutral-100  py-4 px-4 outline-none  transition dark:bg-neutral-800 ">
             <Link href="https://www.seaport.market/">
               <a

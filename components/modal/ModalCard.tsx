@@ -7,8 +7,8 @@ import FormatEth from 'components/FormatEth'
 import Link from 'next/link'
 
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
-const DISABLE_POWERED_BY_RESERVOIR =
-  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
+const DISABLE_POWERED_BY_SEAPORT =
+  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_SEAPORT
 
 type Props = {
   loading: boolean
@@ -44,7 +44,7 @@ const ModalCard: FC<Props> = ({
         <div className="px-5">
           <div
             className={`mx-auto overflow-hidden border border-neutral-300 bg-white p-11 shadow-xl dark:border-neutral-600 dark:bg-black md:w-[510px] ${
-              DISABLE_POWERED_BY_RESERVOIR ? ' rounded-2xl' : ' rounded-t-2xl'
+              DISABLE_POWERED_BY_SEAPORT ? ' rounded-2xl' : ' rounded-t-2xl'
             }`}
           >
             <div className="mb-4 flex items-center justify-between">
@@ -78,7 +78,7 @@ const ModalCard: FC<Props> = ({
               </div>
             )}
           </div>
-          {!DISABLE_POWERED_BY_RESERVOIR && (
+          {!DISABLE_POWERED_BY_SEAPORT && (
             <div className="mx-auto flex items-center justify-center rounded-b-2xl bg-neutral-100 py-4 dark:bg-neutral-800 md:w-[510px]">
               <Link href="https://www.seaport.market/">
                 <a
