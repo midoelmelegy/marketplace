@@ -34,11 +34,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
         className={`relative inline-flex flex-none items-center gap-1 ${className}`}
       >
         <img
-          src={logo
-            !!DARK_MODE
-              ? `/seaport_watermark_dark.svg`
-              : `/seaport_watermark_light.svg`
-          }
+          src={logo}
           alt={logoAlt}
           className={`h-9 w-auto ${!variant ? 'md:hidden' : ''} ${
             desktopVariant ? 'hidden' : ''
