@@ -16,9 +16,7 @@ The marketplace supports 3 different modes:
   
 With each deployment, communities are given full control over their marketplace from designing their look and feel to setting their own marketplace fees.
 
-We currently offer hosted and self hosted deployment options. For self hosted deployments you can simply fork this repository and follow the instructions below to configure and deploy your marketplace. For hosted deployments please submit your request and we will be in touch.
-
-[Submit your request for a Hosted Deployment here.](https://forms.gle/o6mbPJb7bwaG22pm6)
+We currently offer hosted and self hosted deployment options. For self hosted deployments you can simply fork this repository and follow the instructions below to configure and deploy your marketplace.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
