@@ -7,7 +7,6 @@ const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
 const SOURCE_NAME = process.env.NEXT_PUBLIC_SOURCE_NAME
 const DESKTOP_NAVBAR_LOGO = process.env.NEXT_PUBLIC_DESKTOP_NAVBAR_LOGO
 const NAVBAR_LOGO_LINK = process.env.NEXT_PUBLIC_NAVBAR_LOGO_LINK
-const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 
 type Props = {
   variant?: 'desktop' | 'mobile' | undefined
@@ -35,22 +34,14 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
         className={`relative inline-flex flex-none items-center gap-1 ${className}`}
       >
         <img
-          src={
-            !!DARK_MODE
-              ? `/seaport_watermark_dark.svg`
-              : `/seaport_watermark_light.svg`
-          }
+          src={logo}
           alt={logoAlt}
           className={`h-9 w-auto ${!variant ? 'md:hidden' : ''} ${
             desktopVariant ? 'hidden' : ''
           } ${mobileVariant ? 'block' : ''}`}
         />
         <img
-          src={
-            !!DARK_MODE
-              ? `/seaport_watermark_dark.svg`
-              : `/seaport_watermark_light.svg`
-          }
+          src={desktopLogo}
           alt={logoAlt}
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
