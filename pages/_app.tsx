@@ -65,8 +65,6 @@ const RESERVOIR_API_KEY = process.env.NEXT_PUBLIC_RESERVOIR_API_KEY
 const BODY_FONT_FAMILY = process.env.NEXT_PUBLIC_BODY_FONT_FAMILY || 'Inter'
 const FONT_FAMILY = process.env.NEXT_PUBLIC_FONT_FAMILY || 'Inter'
 const PRIMARY_COLOR = process.env.NEXT_PUBLIC_PRIMARY_COLOR || 'default'
-const DISABLE_POWERED_BY_SEAPORT =
-  process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_SEAPORT
 const DISABLE_POWERED_BY_RESERVOIR =
   process.env.NEXT_PUBLIC_DISABLE_POWERED_BY_RESERVOIR
 import presetColors from '../colors'
@@ -175,9 +173,6 @@ const App: FC<AppProps & { baseUrl: string }> = ({
     disablePoweredByReservoir:
       DISABLE_POWERED_BY_RESERVOIR != undefined &&
       DISABLE_POWERED_BY_RESERVOIR != null,
-    disablePoweredBySeaport:
-      DISABLE_POWERED_BY_SEAPORT != undefined &&
-      DISABLE_POWERED_BY_SEAPORT != null,
     source: SOURCE_DOMAIN,
   }
 
