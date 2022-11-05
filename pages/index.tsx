@@ -93,7 +93,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
               </div>
               {!isSmallDevice}
             </div>
-            <CollectionsGrid collections={collections} />
+            <CollectionsGrid collection={collection} />
           </div>
     </Layout>
   )
