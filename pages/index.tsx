@@ -5,6 +5,7 @@ import setParams from 'lib/params'
 import Head from 'next/head'
 import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import SortTrendingCollections from 'components/SortTrendingCollections'
+import CollectionsGrid from './CollectionsGrid'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -90,9 +91,9 @@ const Home: NextPage<Props> = ({ fallback }) => {
               <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
                 Trending
               </div>
-              {!isSmallDevice && <SortTrendingCollections />}
+              {!isSmallDevice}
             </div>
-            <TrendingCollectionTable fallback={fallback} />
+            <CollectionsGrid collections={collections} />
           </div>
     </Layout>
   )
