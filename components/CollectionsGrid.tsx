@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import Image, { ImageLoaderProps } from 'next/image'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
 import usePaginatedCollections from 'hooks/usePaginatedCollections'
@@ -9,10 +8,6 @@ import Masonry from 'react-masonry-css'
 
 type Props = {
   collections: ReturnType<typeof usePaginatedCollections>
-}
-
-const imageLoader = (props: ImageLoaderProps) => {
-  return optimizeImage(props.src, props.width)
 }
 
 const CollectionsGrid: FC<Props> = ({ collections }) => {
@@ -72,13 +67,10 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                   />
                   <div className="mt-3 flex items-center gap-2">
                     {collection?.image ? (
-                      <Image
-                        loader={imageLoader}
-                        src={collection?.image}
-                        alt={`${collection?.name} Image`}
+                      <img
+                        src={optimizeImage(collection?.image, 80)}
                         className="h-12 w-12 rounded-full"
-                        width={80}
-                        height={80}
+                        alt="Collection Image"
                       />
                     ) : (
                       <div className="h-12 w-12 flex-none rounded-full bg-gradient-to-br from-primary-500 to-primary-900"></div>
