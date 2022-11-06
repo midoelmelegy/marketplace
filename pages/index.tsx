@@ -84,7 +84,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
         {image}
       </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
-                  <h1 className="reservoir-h1 text-center dark:text-white homepage-header-text-extra-small-screen">{tagline}</h1>
+                  <h1 className="medium-screen-extra-padding reservoir-h1 text-center dark:text-white homepage-header-text-extra-small-screen">{tagline}</h1>
           </header>
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
