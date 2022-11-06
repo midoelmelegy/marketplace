@@ -3,8 +3,8 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-kit-client'
 import setParams from 'lib/params'
 import Head from 'next/head'
-import TrendingCollectionTable from 'components/TrendingCollectionTable'
-import SortTrendingCollections from 'components/SortTrendingCollections'
+import CollectionsGrid from 'components/CollectionsGrid'
+import usePaginatedCollections from 'hooks/usePaginatedCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -52,6 +52,7 @@ const metadata = {
 }
 
 const Home: NextPage<Props> = ({ fallback }) => {
+  const collections = usePaginatedCollections()
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
@@ -90,9 +91,9 @@ const Home: NextPage<Props> = ({ fallback }) => {
               <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
                 Trending
               </div>
-              {!isSmallDevice && <SortTrendingCollections />}
+              {!isSmallDevice />}
             </div>
-            <TrendingCollectionTable fallback={fallback} />
+            <CollectionsGrid collections={collections} />
           </div>
     </Layout>
   )
