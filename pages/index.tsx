@@ -4,7 +4,7 @@ import { paths } from '@reservoir0x/reservoir-kit-client'
 import setParams from 'lib/params'
 import Head from 'next/head'
 import CollectionsGrid from 'components/CollectionsGrid'
-import usePaginatedCollections from 'hooks/usePaginatedCollections'
+import useCollections from 'hooks/useCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -52,7 +52,7 @@ const metadata = {
 }
 
 const Home: NextPage<Props> = ({ fallback }) => {
-  const collections = usePaginatedCollections()
+  const collections = useCollections()
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
