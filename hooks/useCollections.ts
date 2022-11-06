@@ -45,8 +45,8 @@ const getKey: (
     return null
 
   let query: paths['/collections/v2']['get']['parameters']['query'] = {
-    limit: 10,
-    offset: index * 10,
+    limit: 5,
+    offset: index * 5,
     sortBy: '7DayVolume',
   }
 
