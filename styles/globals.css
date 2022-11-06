@@ -79,6 +79,18 @@ model-viewer {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .homepage-header-text-small-screen {
+    margin-right: 0 !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .homepage-header-text-extra-small-screen {
+    font-size: 34px;
+  }
+}
+
 @media screen and (max-width: 420px) {
   .small-screen-no-padding {
     padding-left: 0rem !important;
