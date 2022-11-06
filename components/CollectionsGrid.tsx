@@ -69,11 +69,11 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                     {collection?.image ? (
                       <img
                         src={optimizeImage(collection?.image, 80)}
-                        className="h-12 w-12 rounded-full"
-                        alt="Collection Image"
+                        className="h-12 w-12 rounded-lg"
+                        alt={`${collection?.name} Image`}
                       />
                     ) : (
-                      <div className="h-12 w-12 flex-none rounded-full bg-gradient-to-br from-primary-500 to-primary-900"></div>
+                      <div className="h-12 w-12 flex-none rounded-l bg-gradient-to-br from-primary-500 to-primary-900"></div>
                     )}
 
                     <div className="reservoir-subtitle dark:text-white">
