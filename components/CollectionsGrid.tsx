@@ -2,12 +2,12 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
-import usePaginatedCollections from 'hooks/usePaginatedCollections'
+import useCollections from 'hooks/useCollections'
 import LoadingCardCollection from './LoadingCardCollection'
 import Masonry from 'react-masonry-css'
 
 type Props = {
-  collections: ReturnType<typeof usePaginatedCollections>
+  collections: ReturnType<typeof useCollections>
 }
 
 const CollectionsGrid: FC<Props> = ({ collections }) => {
