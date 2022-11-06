@@ -91,7 +91,6 @@ const Home: NextPage<Props> = ({ fallback }) => {
               <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
                 Trending
               </div>
-              {!isSmallDevice />}
             </div>
             <CollectionsGrid collections={collections} />
           </div>
