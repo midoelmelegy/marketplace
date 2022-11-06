@@ -5,6 +5,7 @@ import setParams from 'lib/params'
 import Head from 'next/head'
 import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import SortTrendingCollections from 'components/SortTrendingCollections'
+import Footer from 'components/Footer'
 import CollectionsGrid from 'components/CollectionsGrid'
 import useCollections from 'hooks/useCollections'
 import { useMediaQuery } from '@react-hookz/web'
@@ -98,6 +99,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
             </div>
             <TrendingCollectionTable fallback={fallback} />
           </div>
+          <Footer/>
     </Layout>
   )
 }

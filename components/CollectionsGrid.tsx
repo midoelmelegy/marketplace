@@ -5,6 +5,10 @@ import ImagesGrid from './ImagesGrid'
 import useCollections from 'hooks/useCollections'
 import LoadingCardCollection from './LoadingCardCollection'
 import Masonry from 'react-masonry-css'
+import { useState } from 'react'
+import { CgSpinner } from 'react-icons/cg'
+
+const FOOTER_ENABLED = process.env.NEXT_PUBLIC_FOOTER_ENABLED
 
 type Props = {
   collections: ReturnType<typeof useCollections>
@@ -15,6 +19,9 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
     collections: { data, isValidating },
     ref,
   } = collections
+  const [expanded, setExpanded] = useState<boolean>(false);
+
+  const shouldInfiniteLoad = !FOOTER_ENABLED || (FOOTER_ENABLED && expanded && collections.size < 5)
 
   const mappedCollections = data
     ? data
@@ -24,8 +31,14 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
     : []
   const didReachEnd = data && data[data.length - 1]?.collections?.length === 0
 
+  if(FOOTER_ENABLED && !expanded && index > 9) {
+    return
+  }
+
   return (
     <Masonry
+      ref={index === arr.length - 5 && shouldInfiniteLoad ? ref : null}
+      className={`${index === arr.length - 1 || (!expanded && index == 9) ? '' : 'border-b'} group h-[88px] border-neutral-300 dark:border-neutral-600 dark:text-white`}
       key="collectionGridMasonry"
       breakpointCols={{
         default: 5,
@@ -83,6 +96,20 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                 </a>
               </Link>
             ))}
+      {FOOTER_ENABLED && expanded && collections.isValidating &&
+        <CgSpinner className="mx-auto h-6 w-6 animate-spin" />
+      }
+
+      {FOOTER_ENABLED && !expanded &&
+        <button
+          className='mx-auto my-3 btn-primary-outline border border-[#D4D4D4] bg-white text-black dark:border-[#525252] dark:bg-black dark:text-white dark:ring-[#525252] dark:focus:ring-4'
+          onClick={() => {
+            setExpanded(true)
+          }}
+        >
+          Load More
+        </button>
+      }
       {!didReachEnd &&
         Array(5)
           .fill(null)
