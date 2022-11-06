@@ -69,7 +69,7 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                     {collection?.image ? (
                       <img
                         src={optimizeImage(collection?.image, 80)}
-                        className="h-12 w-12 rounded-lg"
+                        className="h-12 w-12 rounded-lg border border-gray-300 object-cover"
                         alt={`${collection?.name} Image`}
                       />
                     ) : (
