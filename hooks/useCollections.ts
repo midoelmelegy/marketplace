@@ -22,16 +22,6 @@ export default function useCollections() {
     }
   )
 
-  // Fetch more data when component is visible
-  useEffect(() => {
-    if (inView) {
-      collections.setSize(collections.size + 1)
-    }
-  }, [inView])
-
-  return { collections, ref }
-}
-
 const getKey: (
   pathname: string,
   ...base: Parameters<SWRInfiniteKeyLoader>
@@ -46,7 +36,7 @@ const getKey: (
 
   let query: paths['/collections/v2']['get']['parameters']['query'] = {
     limit: 5,
-    offset: index * 5,
+    offset: 0,
     sortBy: '7DayVolume',
   }
 
