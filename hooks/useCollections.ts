@@ -39,7 +39,7 @@ const getKey: (
   if (previousPageData && previousPageData?.collections?.length === 0)
     return null
 
-  let query: paths['/collections/v5']['get']['parameters']['query'] = {
+  let query: paths['/collections/v2']['get']['parameters']['query'] = {
     limit: 5,
     offset: 0,
     sortBy: '7DayVolume',
