@@ -22,6 +22,12 @@ export default function useCollections() {
     }
   )
 
+  // Fetch more data when component is visible
+  useEffect(() => {}, [inView])
+
+  return { collections, ref }
+}
+
 const getKey: (
   pathname: string,
   ...base: Parameters<SWRInfiniteKeyLoader>
