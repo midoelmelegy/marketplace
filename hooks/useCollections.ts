@@ -12,7 +12,7 @@ type Collections = paths['/collections/v5']['get']['responses']['200']['schema']
 export default function useCollections() {
   const { ref, inView } = useInView()
 
-  const pathname = `${PROXY_API_BASE}/collections/v5`
+  const pathname = `${PROXY_API_BASE}/collections/v2`
 
   const collections = useSWRInfinite<Collections>(
     (index, previousPageData) => getKey(pathname, index, previousPageData),
@@ -33,7 +33,7 @@ const getKey: (
 ) => ReturnType<SWRInfiniteKeyLoader> = (
   pathname: string,
   index: number,
-  previousPageData: paths['/collections/v2']['get']['responses']['200']['schema']
+  previousPageData: paths['/collections/v5']['get']['responses']['200']['schema']
 ) => {
   // Reached the end
   if (previousPageData && previousPageData?.collections?.length === 0)
