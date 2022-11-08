@@ -12,7 +12,7 @@ type Collections = paths['/collections/v5']['get']['responses']['200']['schema']
 export default function useCollections() {
   const { ref, inView } = useInView()
 
-  const pathname = `${PROXY_API_BASE}/collections/v2`
+  const pathname = `${PROXY_API_BASE}/collections/v3`
 
   const collections = useSWRInfinite<Collections>(
     (index, previousPageData) => getKey(pathname, index, previousPageData),
@@ -39,7 +39,7 @@ const getKey: (
   if (previousPageData && previousPageData?.collections?.length === 0)
     return null
 
-  let query: paths['/collections/v2']['get']['parameters']['query'] = {
+  let query: paths['/collections/v3']['get']['parameters']['query'] = {
     limit: 5,
     offset: 0,
     sortBy: '7DayVolume',
