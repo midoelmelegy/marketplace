@@ -3,14 +3,13 @@ import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
 import useCollections from 'hooks/useCollections'
-import LoadingCardCollection from './LoadingCardCollection'
 import Masonry from 'react-masonry-css'
 
 type Props = {
   collections: ReturnType<typeof useCollections>
 }
 
-const CollectionsGrid: FC<Props> = ({ collections }) => {
+const CollectionsGridWide: FC<Props> = ({ collections }) => {
   const {
     collections: { data, isValidating },
     ref,
@@ -87,4 +86,4 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
   )
 }
 
-export default CollectionsGrid
+export default CollectionsGridWide
