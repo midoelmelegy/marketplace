@@ -83,20 +83,6 @@ const CollectionsGrid: FC<Props> = ({ collections }) => {
                 </a>
               </Link>
             ))}
-      {!didReachEnd &&
-        Array(5)
-          .fill(null)
-          .map((_, index) => {
-            if (index === 0) {
-              return (
-                <LoadingCardCollection
-                  viewRef={ref}
-                  key={`loading-card-${index}`}
-                />
-              )
-            }
-            return <LoadingCardCollection key={`loading-card-${index}`} />
-          })}
     </Masonry>
   )
 }
