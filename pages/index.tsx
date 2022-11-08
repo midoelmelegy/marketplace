@@ -5,7 +5,7 @@ import setParams from 'lib/params'
 import Head from 'next/head'
 import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import SortTrendingCollections from 'components/SortTrendingCollections'
-import CollectionsGrid from 'components/CollectionsGridWide'
+import CollectionsGridWide from 'components/CollectionsGridWide'
 import useCollections from 'hooks/useCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
@@ -87,7 +87,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
       </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
                   <h1 className="medium-screen-extra-padding reservoir-h1 text-center dark:text-white homepage-header-text-extra-small-screen">{tagline}</h1>
-          <CollectionsGrid collections={collections} />
+          <CollectionsGridWide collections={collections} />
           </header>
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
