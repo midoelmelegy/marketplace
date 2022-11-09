@@ -1,7 +1,7 @@
 import Layout from 'components/Layout'
 import type { NextPage } from 'next'
 
-const Terms: NextPage = () => {
+const Privacy: NextPage = () => {
   return (
     <Layout navbar={{}}>
       <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
@@ -14,4 +14,4 @@ const Terms: NextPage = () => {
   )
 }
 
-export default Terms
+export default Privacy
