@@ -5,9 +5,6 @@ import setParams from 'lib/params'
 import Head from 'next/head'
 import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import SortTrendingCollections from 'components/SortTrendingCollections'
-import Footer from 'components/Footer'
-import CollectionsGridWide from 'components/CollectionsGridWide'
-import useCollections from 'hooks/useCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -54,8 +51,7 @@ const metadata = {
   },
 }
 
-const Home: NextPage<Props> = ({ fallback }) => {
-  const collections = useCollections()
+const Rankings: NextPage<Props> = ({ fallback }) => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
@@ -87,8 +83,7 @@ const Home: NextPage<Props> = ({ fallback }) => {
         {image}
       </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
-                  <h1 className="medium-screen-extra-padding reservoir-h1 text-center dark:text-white homepage-header-text-extra-small-screen">{tagline}</h1>
-          <CollectionsGridWide collections={collections} />
+                  <h1 className="reservoir-h1 text-center dark:text-white">Collection stats</h1>
           </header>
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
@@ -99,12 +94,11 @@ const Home: NextPage<Props> = ({ fallback }) => {
             </div>
             <TrendingCollectionTable fallback={fallback} />
           </div>
-          <Footer/>
     </Layout>
   )
 }
 
-export default Home
+export default Rankings
 
 export const getStaticProps: GetStaticProps<{
   fallback: {
