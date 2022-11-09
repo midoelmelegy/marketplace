@@ -3,7 +3,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-kit-client'
 import setParams from 'lib/params'
 import Head from 'next/head'
-import TrendingCollectionTable from 'components/TrendingCollectionTable'
+import TrendingCollectionTableHome from 'components/TrendingCollectionTableHome'
 import SortTrendingCollections from 'components/SortTrendingCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
@@ -92,7 +92,7 @@ const Rankings: NextPage<Props> = ({ fallback }) => {
               </div>
               {!isSmallDevice && <SortTrendingCollections />}
             </div>
-            <TrendingCollectionTable fallback={fallback} />
+            <TrendingCollectionTableHome fallback={fallback} />
           </div>
     </Layout>
   )
