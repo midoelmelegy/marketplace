@@ -83,12 +83,12 @@ const Rankings: NextPage<Props> = ({ fallback }) => {
         {image}
       </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
-                  <h1 className="reservoir-h1 text-center dark:text-white">Collection stats</h1>
+                  <h1 className="reservoir-h1 text-center dark:text-white"></h1>
           </header>
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
-              <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
-                Trending
+              <div className="medium-screen-extra-padding reservoir-h1 dark:text-white">
+              Collection stats
               </div>
               {!isSmallDevice && <SortTrendingCollections />}
             </div>

@@ -9,9 +9,9 @@ const Footer = () => {
     return (
       <footer className='col-span-full flex flex-col sm:flex-row justify-between items-center px-6 md:px-16 pb-12'>
         <div className='flex flex-row justify-between items-center gap-x-6 sm:gap-x-8 mb-6 sm:mb-0 text-xs sm:text-sm flex-wrap'>
-          <Link href='/ranking'>
+          <Link href='/rankings'>
             <a className=''>
-              Ranking
+              Rankings
             </a>
           </Link>
           <Link href='/privacy'>
