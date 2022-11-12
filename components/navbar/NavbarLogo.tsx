@@ -15,12 +15,18 @@ type Props = {
 }
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
-  const logo = DARK_MODE
-  ? '/seaport-desktop-light.svg'
-  : '/seaport-desktop.svg'
-  const desktopLogo = DARK_MODE
-  ? '/seaport-desktop-light.svg'
-  : '/seaport-desktop.svg'
+  const logo = NAVBAR_LOGO || '/seaport.svg'
+  if (DARK_MODE) {
+    logo = '/seaport.svg'
+  } else if (DARK_MODE) {
+    logo = NAVBAR_LOGO
+  }
+  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/seaport-desktop.svg'
+  if (DARK_MODE) {
+    desktopLogo = '/seaport-desktop-light.svg'
+  } else if (DARK_MODE) {
+    desktopLogo = DESKTOP_NAVBAR_LOGO
+  }
   const chain = useEnvChain()
   let logoAlt = 'Logo'
 
