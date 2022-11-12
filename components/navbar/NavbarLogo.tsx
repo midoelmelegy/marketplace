@@ -40,14 +40,13 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             desktopVariant ? 'hidden' : ''
           } ${mobileVariant ? 'block' : ''}`}
         />
-        <picture>
-        <source srcset={desktopLogo} media="(prefers-color-scheme: dark)">
-        <img src="/seaport-dektop-light">
+        <img
+          src={desktopLogo}
           alt={logoAlt}
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
-        </picture>
+        />
         {chain?.testnet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]
