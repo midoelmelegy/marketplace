@@ -16,7 +16,7 @@ type Props = {
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/seaport.svg'
-  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/seaport-desktop.svg'
+  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/seaport.svg'
   const chain = useEnvChain()
   let logoAlt = 'Logo'
 
@@ -34,7 +34,6 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
       <a
         className={`relative inline-flex flex-none items-center gap-1 ${className}`}
       >
-        <h1 className="font-mono text-2xl">SeaPort</h1>
         <img
           src={logo}
           alt={logoAlt}
@@ -42,6 +41,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             desktopVariant ? 'hidden' : ''
           } ${mobileVariant ? 'block' : ''}`}
         />
+        <h1 className="font-mono text-2xl">SeaPort</h1>
         <img
           src={desktopLogo}
           alt={logoAlt}
@@ -49,6 +49,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
         />
+        <h1 className="font-mono text-2xl">SeaPort</h1>
         {chain?.testnet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]
