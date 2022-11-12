@@ -35,7 +35,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
         className={`relative inline-flex flex-none items-center gap-1 ${className}`}
       >
         <h1 className="font-mono text-2xl">SeaPort</h1>
-        {/*<img
+        <img
           src={logo}
           alt={logoAlt}
           className={`h-9 w-auto ${!variant ? 'md:hidden' : ''} ${
@@ -48,7 +48,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
-        */}
+        />
         {chain?.testnet && (
           <div
             className={`reservoir-tiny inline rounded-[4px] bg-[#EFC45C] p-1 py-[2px]
