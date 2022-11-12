@@ -41,9 +41,8 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
           } ${mobileVariant ? 'block' : ''}`}
         />
         <img
-          src={desktopLogo}
+          src={desktopLogo 'dark: "seaport-desktop-light.svg"'}
           alt={logoAlt}
-          srcSet='dark: "seaport-desktop-light.svg"'
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
