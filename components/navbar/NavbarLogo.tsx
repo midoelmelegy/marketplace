@@ -15,12 +15,8 @@ type Props = {
 }
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
-  const logo = NAVBAR_LOGO = DARK_MODE
-  ? '/seaport.svg'
-  : '/seaport.svg'
-  const desktopLogo = DESKTOP_NAVBAR_LOGO = DARK_MODE
-  ? '/seaport-desktop.svg'
-  : '/seaport-desktop-light.svg'
+  const logo = NAVBAR_LOGO || '/seaport.svg'
+  const desktopLogo = DESKTOP_NAVBAR_LOGO || '/seaport-desktop.svg'
   const chain = useEnvChain()
   let logoAlt = 'Logo'
 
@@ -46,7 +42,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
           } ${mobileVariant ? 'block' : ''}`}
         />
         <img
-          src={desktopLogo}
+          src={desktopLogo == DARK_MODE ? '/seaport-desktop.svg' : '/seaport-desktop-light.svg'}
           alt={logoAlt}
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
