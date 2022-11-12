@@ -13,8 +13,6 @@ type Props = {
   className?: string
 }
 
-const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
-
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/seaport.svg'
   const desktopLogo = DESKTOP_NAVBAR_LOGO || '/seaport-desktop.svg'
@@ -43,8 +41,9 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
           } ${mobileVariant ? 'block' : ''}`}
         />
         <img
-          src={desktopLogo === DARK_MODE ?'/seaport-desktop.svg' :'/seaport-desktop-light.svg'}
+          src={desktopLogo}
           alt={logoAlt}
+          srcSet='dark: "seaport-desktop-light.svg"'
           className={`h-9 w-auto md:block ${
             !variant ? 'hidden md:block' : ''
           } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
