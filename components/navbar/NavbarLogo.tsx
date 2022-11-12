@@ -2,8 +2,10 @@ import useEnvChain from 'hooks/useEnvChain'
 import Link from 'next/link'
 import { FC } from 'react'
 
+const NAVBAR_LOGO = process.env.NEXT_PUBLIC_NAVBAR_LOGO
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
 const SOURCE_NAME = process.env.NEXT_PUBLIC_SOURCE_NAME
+const DESKTOP_NAVBAR_LOGO = process.env.NEXT_PUBLIC_DESKTOP_NAVBAR_LOGO
 const NAVBAR_LOGO_LINK = process.env.NEXT_PUBLIC_NAVBAR_LOGO_LINK
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 
@@ -13,10 +15,10 @@ type Props = {
 }
 
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
-  const logo = DARK_MODE
+  const logo = NAVBAR_LOGO = DARK_MODE
   ? '/seaport.svg'
   : '/seaport.svg'
-  const desktopLogo = DARK_MODE
+  const desktopLogo = DESKTOP_NAVBAR_LOGO = DARK_MODE
   ? '/seaport-desktop.svg'
   : '/seaport-desktop-light.svg'
   const chain = useEnvChain()
