@@ -154,11 +154,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
-            <img
-            src="/icons/Verified.svg"
-            alt={header.openseaVerificationStatus}
-            className="h-6 w-6"
-          />
+            <MdVerified className="h-6 w-6" />
           </h1>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
