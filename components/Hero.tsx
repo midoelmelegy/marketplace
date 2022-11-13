@@ -152,7 +152,9 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
             alt={`${header.name} Logo`}
             src={header.image}
           />
-          <a>
+          <a
+            class="reservoir-h4 text-center text-black dark:text-white"
+          >
             <img
               src="/icons/Verified.svg"
               alt="Verified"
