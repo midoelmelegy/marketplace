@@ -1,6 +1,7 @@
 import { useMediaQuery } from '@react-hookz/web'
 import { FC } from 'react'
 import { FiGlobe, FiMoreVertical } from 'react-icons/fi'
+import { MdVerified } from "react-icons/md";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Collection } from 'types/reservoir'
 
@@ -16,10 +17,11 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
     twitterUsername: collection?.twitterUsername,
     externalUrl: collection?.externalUrl,
     discordUrl: collection?.discordUrl,
+    openseaVerificationStatus: collection?.openseaVerificationStatus
     etherscanUrl: `https://etherscan.io/address/${collection?.id}`,
   }
 
-  if (!social.twitterUsername && !social.externalUrl && !social.discordUrl) {
+  if (!social.twitterUsername && !social.externalUrl && !social.discordUrl && !social.openseaVerificationStatus) {
     return null
   }
 
@@ -99,6 +101,16 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                 >
                   <FiGlobe className="h-6 w-6" />
                   Website
+                </a>
+              </DropdownMenu.Item>
+            )}
+            {typeof social.openseaVerificationStatus === 'string' && (
+              <DropdownMenu.Item asChild>
+                <a
+                  className={dropdownItemClasses}
+                >
+                  <MdVerified className="h-6 w-6" />
+                  Verified
                 </a>
               </DropdownMenu.Item>
             )}
