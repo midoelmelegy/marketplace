@@ -153,12 +153,9 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
             alt={`${header.name} Logo`}
             src={header.image}
           />
-          <div class="flex gap-2">
-          <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
             <MdVerified className="h-6 w-6" />
           </h1>
-          </div>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
           {header.description && (
