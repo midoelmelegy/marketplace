@@ -17,7 +17,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
     twitterUsername: collection?.twitterUsername,
     externalUrl: collection?.externalUrl,
     discordUrl: collection?.discordUrl,
-    openseaVerificationStatus: collection?.openseaVerificationStatus
+    openseaVerificationStatus: collection?.openseaVerificationStatus,
     etherscanUrl: `https://etherscan.io/address/${collection?.id}`,
   }
 
