@@ -1,7 +1,6 @@
 import { useMediaQuery } from '@react-hookz/web'
 import { FC } from 'react'
 import { FiGlobe, FiMoreVertical } from 'react-icons/fi'
-import { MdVerified } from "react-icons/md";
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Collection } from 'types/reservoir'
 
