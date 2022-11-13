@@ -109,7 +109,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                 <a
                   className={dropdownItemClasses}
                 >
-                  <MdVerified className="h-6 w-6 blue600" alt="Verified" />
+                  <MdVerified className="h-6 w-6 fill-blue-500" alt="Verified" />
                   Verified
                 </a>
               </DropdownMenu.Item>
@@ -172,7 +172,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
             className="flex-none text-black dark:text-white"
             alt="Verified"
           >
-            <MdVerified className="h-6 w-6 blue600" />
+            <MdVerified className="h-6 w-6" />
           </a>
         )}
       </div>
