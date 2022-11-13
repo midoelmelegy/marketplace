@@ -15,7 +15,7 @@ import Sweep from './Sweep'
 import ReactMarkdown from 'react-markdown'
 import { useMediaQuery } from '@react-hookz/web'
 import { useCollections } from '@reservoir0x/reservoir-kit-ui'
-import { MdVerified } from "react-icons/md";
+import { MdOutlineVerified } from "react-icons/md";
 
 const envBannerImage = process.env.NEXT_PUBLIC_BANNER_IMAGE
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
@@ -155,7 +155,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
-            <MdVerified className="h-6 w-6" />
+            <MdOutlineVerified className="h-6 w-6" />
           </h1>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
