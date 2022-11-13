@@ -170,7 +170,6 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
         {typeof social.openseaVerificationStatus === 'string' && (
           <a
             className="flex-none text-black dark:text-white"
-            alt="Verified"
           >
             <MdVerified className="h-6 w-6" />
           </a>
