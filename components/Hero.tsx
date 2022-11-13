@@ -124,6 +124,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     name: collection?.name,
     description: description,
     shortDescription: description ? description.slice(0, 150) : description,
+    openseaVerificationStatus: collection?.openseaVerificationStatus,
   }
 
   const isSupported = !!collection?.collectionBidSupported
@@ -154,6 +155,11 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
           </h1>
+          <img
+            src="/icons/Verified.svg"
+            alt={header.openseaVerificationStatus}
+            className="h-6 w-6"
+          />
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
           {header.description && (
