@@ -152,9 +152,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
             alt={`${header.name} Logo`}
             src={header.image}
           />
-          <a
-            className={dropdownItemClasses}
-          >
+          <a>
             <img
               src="/icons/Verified.svg"
               alt="Verified"
