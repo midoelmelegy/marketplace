@@ -21,7 +21,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
   }
 
   if (!social.twitterUsername && !social.externalUrl && !social.discordUrl && !social.openseaVerificationStatus) {
-    return null || "not_requested"
+    return null
   }
 
   const etherscanLogo = DARK_MODE
