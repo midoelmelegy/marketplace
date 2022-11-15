@@ -103,7 +103,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
                 </a>
               </DropdownMenu.Item>
             )}
-            {typeof social.openseaVerificationStatus === 'string' && (
+            {social.openseaVerificationStatus === 'verified' && (
               <DropdownMenu.Item asChild>
                 <a
                   className={dropdownItemClasses}
@@ -170,7 +170,7 @@ const HeroSocialLinks: FC<Props> = ({ collection }) => {
             <FiGlobe className="h-6 w-6" />
           </a>
         )}
-        {typeof social.openseaVerificationStatus === 'string' && (
+        {social.openseaVerificationStatus === 'verified' && (
           <a
             className="flex-none text-black dark:text-white"
           >
