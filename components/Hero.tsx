@@ -154,8 +154,8 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
-            <VerifiedTooltip/>
           </h1>
+          <VerifiedTooltip/>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
           {header.description && (
