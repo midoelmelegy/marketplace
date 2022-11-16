@@ -160,7 +160,11 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
             {header.openseaVerificationStatus === 'verified' && (
-              <VerifiedTooltip/>
+              <img
+              src="/icons/Verified.svg"
+              alt="Verified"
+              className="h-6 w-6"
+            />
             )}
           </h1>
           <HeroSocialLinks collection={collection} />
