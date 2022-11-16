@@ -1,19 +1,7 @@
 import { FC } from 'react'
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { Collection } from 'types/reservoir'
-
-type Props = {
-  collection?: Collection
-}
 
 const VerifiedTooltip: FC<Props> = ({ collection }) => {
-  const verified = {
-    openseaVerificationStatus: collection?.openseaVerificationStatus,
-  }
-
-  if (!verified.openseaVerificationStatus) {
-    return null
-  }
 
     return (
         <Tooltip.Provider>
