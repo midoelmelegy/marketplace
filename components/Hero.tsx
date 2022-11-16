@@ -127,6 +127,10 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     openseaVerificationStatus: collection?.openseaVerificationStatus,
   }
 
+  if (!header.openseaVerificationStatus) {
+    return null
+  }
+
   const isSupported = !!collection?.collectionBidSupported
 
   const isAttributeModal = !!attribute
