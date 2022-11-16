@@ -1,7 +1,6 @@
-import { FC } from 'react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 
-const VerifiedTooltip: FC<Props> = ({ collection }) => {
+const VerifiedTooltip
 
     return (
         <Tooltip.Provider>
@@ -24,6 +23,5 @@ const VerifiedTooltip: FC<Props> = ({ collection }) => {
         </Tooltip.Root>
       </Tooltip.Provider>
     )
-}
 
 export default VerifiedTooltip
