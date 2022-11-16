@@ -125,6 +125,11 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     name: collection?.name,
     description: description,
     shortDescription: description ? description.slice(0, 150) : description,
+    openseaVerificationStatus: collection?.openseaVerificationStatus,
+  }
+
+  if (!header.openseaVerificationStatus) {
+    return null
   }
 
   const isSupported = !!collection?.collectionBidSupported
@@ -154,7 +159,9 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
-            <VerifiedTooltip/>
+            {header.openseaVerificationStatus === 'verified' && (
+              <VerifiedTooltip/>
+            )}
           </h1>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
