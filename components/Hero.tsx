@@ -15,7 +15,6 @@ import Sweep from './Sweep'
 import ReactMarkdown from 'react-markdown'
 import { useMediaQuery } from '@react-hookz/web'
 import { useCollections } from '@reservoir0x/reservoir-kit-ui'
-import VerifiedTooltip from './VerifiedTooltip'
 
 const envBannerImage = process.env.NEXT_PUBLIC_BANNER_IMAGE
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
@@ -125,6 +124,7 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
     name: collection?.name,
     description: description,
     shortDescription: description ? description.slice(0, 150) : description,
+    openseaVerificationStatus: collection?.openseaVerificationStatus,
   }
 
   const isSupported = !!collection?.collectionBidSupported
@@ -154,8 +154,14 @@ const Hero: FC<Props> = ({ fallback, collectionId }) => {
           />
           <h1 className="reservoir-h4 text-center text-black dark:text-white">
             {header.name}
+            {header.openseaVerificationStatus === 'verified' && (
+                  <img
+                  src="/icons/Verified.svg"
+                  alt="Verified"
+                  className="ml-[10px] h-[18px] w-[18px] text-primary-700 dark:text-primary-100"
+                />
+            )}
           </h1>
-          <VerifiedTooltip/>
           <HeroSocialLinks collection={collection} />
           <HeroStats stats={statsObj} />
           {header.description && (
