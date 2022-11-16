@@ -1,6 +1,6 @@
 import * as Tooltip from '@radix-ui/react-tooltip'
 
-const VerifiedTooltip
+const VerifiedTooltip = ({ }) => {
 
     return (
         <Tooltip.Provider>
@@ -23,5 +23,6 @@ const VerifiedTooltip
         </Tooltip.Root>
       </Tooltip.Provider>
     )
+}
 
 export default VerifiedTooltip
