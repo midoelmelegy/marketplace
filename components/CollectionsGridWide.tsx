@@ -77,6 +77,13 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
+                      <div>
+                         <span className="text-primary-700 dark:text-primary-100">
+                           Floor price:
+                         </span>
+                       </div>
+
+                         <FormatNativeCrypto amount={collection?.floorPrice} />
                     </div>
                   </div>
                 </a>
