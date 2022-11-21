@@ -44,9 +44,10 @@ const getKey: (
   if (previousPageData && previousPageData?.collections?.length === 0)
     return null
 
-  let query: paths['/collections/v5']['get']['parameters']['query'] = {
+  let query: paths['/collections/v2']['get']['parameters']['query'] = {
     limit: 20,
-    sortBy: '1DayVolume',
+    offset: index * 20,
+    sortBy: '7DayVolume',
   }
 
   const href = setParams(pathname, query)
