@@ -74,13 +74,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
               supply,
             } = processCollection(collection)
 
-            const badge = {
-              openseaVerificationStatus: collection?.openseaVerificationStatus,
-            }
-          
-            if (!badge.openseaVerificationStatus) {
-              return null
-            }
             
             return (
               <tr
@@ -106,15 +99,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                         }`}
                       >
                         {name}
-                      </div>
-                      <div
-                        className={`reservoir-h6 dark:text-white ${
-                          isSmallDevice ? 'max-w-[115px]' : ''
-                        }`}
-                      >
-                        {badge.openseaVerificationStatus === 'verified' && (
-                         <VerifiedTooltip/>
-                        )}
                       </div>
                     </a>
                   </Link>
