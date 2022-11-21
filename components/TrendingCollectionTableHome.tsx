@@ -99,15 +99,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                       >
                         {name}
                       </div>
-                      <div
-                        className={`reservoir-h6 dark:text-white ${
-                          isSmallDevice ? 'max-w-[115px]' : ''
-                        }`}
-                      >
-                        {openseaVerificationStatus === 'verified' && (
-                         <VerifiedTooltip/>
-                        )}
-                      </div>
                     </a>
                   </Link>
                 </td>
