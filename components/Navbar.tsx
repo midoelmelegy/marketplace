@@ -155,7 +155,20 @@ const Navbar: FC = () => {
             <div className="ml-auto flex">
               {filterComponent && filterComponent}
               </div>
-            )}
+          )}
+      {showLinks && (
+        <div className="z-10 ml-12 mr-12 hidden items-center gap-11 md:flex">
+          {externalLinks.map(({ name, url }) => (
+            <a
+              key={url}
+              href={url}
+              className="text-dark reservoir-h6 hover:text-[#1F2937] dark:text-white"
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+      )}  
             <CartMenu />
             {hasCommunityDropdown && themeSwitcherEnabled && !showDesktopSearch}
             <ConnectWallets />
