@@ -2,7 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
-import FormatCrypto from './FormatCrypto'
+import FormatEth from './FormatEth'
 import useCollections from 'hooks/useCollections'
 import Masonry from 'react-masonry-css'
 
@@ -84,7 +84,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                          </span>
                        </div>
 
-                         <FormatCrypto amount={collection?.floorPrice} />
+                         <FormatEth amount={collection?.floorPrice} />
                     </div>
                   </div>
                 </a>
