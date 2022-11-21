@@ -9,7 +9,7 @@ const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 
 type Collections = paths['/collections/v5']['get']['responses']['200']['schema']
 
-export default function useCollections() {
+export default function useBigCollections() {
   const { ref, inView } = useInView()
 
   const pathname = `${PROXY_API_BASE}/collections/v5`
@@ -47,7 +47,7 @@ const getKey: (
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
     offset: index * 20,
-    sortBy: '30DayVolume',
+    sortBy: '7DayVolume',
   }
 
   const href = setParams(pathname, query)
