@@ -8,11 +8,6 @@ const Explore: FC = () => {
 
   return (
     <Layout navbar={{}}>
-      <Head>
-        {title}
-        {description}
-        {image}
-      </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
                   <h1 className="reservoir-h1 text-center dark:text-white"></h1>
           </header>
