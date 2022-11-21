@@ -1,27 +1,11 @@
 import useBigCollections from 'hooks/useBigCollections'
 import Layout from 'components/Layout'
-import type { NextPage } from 'next'
-import Head from 'next/head'
+import React, { FC } from 'react'
 import CollectionsGridFull from 'components/CollectionsGridFull'
-import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 
-// Environment variables
-// For more information about these variables
-// refer to the README.md file on this repository
-// Reference: https://nextjs.org/docs/basic-features/environment-variables#exposing-environment-variables-to-the-browser
-// REQUIRED
-const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
-const RESERVOIR_API_BASE = process.env.NEXT_PUBLIC_RESERVOIR_API_BASE
-
-// OPTIONAL
-const RESERVOIR_API_KEY = process.env.NEXT_PUBLIC_RESERVOIR_API_KEY
-const REDIRECT_HOMEPAGE = process.env.NEXT_PUBLIC_REDIRECT_HOMEPAGE
 const META_TITLE = process.env.NEXT_PUBLIC_META_TITLE
 const META_DESCRIPTION = process.env.NEXT_PUBLIC_META_DESCRIPTION
-const META_IMAGE = process.env.NEXT_PUBLIC_META_OG_IMAGE
 const TAGLINE = process.env.NEXT_PUBLIC_TAGLINE
-const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
 
 const metadata = {
   title: (title: string) => <title>{title}</title>,
@@ -59,17 +43,10 @@ const Explore: FC = () => {
         {description}
         {image}
       </Head>
-      <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
-                  <h1 className="reservoir-h1 text-center dark:text-white"></h1>
-          </header>
-          <div className="col-span-full small-screen-no-padding md:px-16">
-            <div className="mb-9 flex w-full items-center justify-between">
-              <div className="medium-screen-extra-padding reservoir-h1 dark:text-white">
-              Explore collections
-              </div>
-            </div>
-            <CollectionsGridFull collections={collections} />
-          </div>
+      <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
+        <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
+      </header>
+      <CollectionsGridFull collections={collections} />
     </Layout>
   )
 }
