@@ -1,6 +1,6 @@
 import useBigCollections from 'hooks/useBigCollections'
 import Layout from 'components/Layout'
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import CollectionsGridFull from 'components/CollectionsGridFull'
 import { useEffect } from 'react'
@@ -22,8 +22,6 @@ const META_DESCRIPTION = process.env.NEXT_PUBLIC_META_DESCRIPTION
 const META_IMAGE = process.env.NEXT_PUBLIC_META_OG_IMAGE
 const TAGLINE = process.env.NEXT_PUBLIC_TAGLINE
 const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
-
-type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 const metadata = {
   title: (title: string) => <title>{title}</title>,
