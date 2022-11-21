@@ -7,7 +7,7 @@ import TrendingCollectionTable from 'components/TrendingCollectionTable'
 import SortTrendingCollections from 'components/SortTrendingCollections'
 import Footer from 'components/Footer'
 import CollectionsGridFull from 'components/CollectionsGridFull'
-import usePaginatedCollections from 'hooks/usePaginatedCollections'
+import useCollections from 'hooks/useCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -55,7 +55,7 @@ const metadata = {
 }
 
 const Explore: NextPage<Props> = ({ fallback }) => {
-  const collections = usePaginatedCollections()
+  const collections = useCollections()
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
