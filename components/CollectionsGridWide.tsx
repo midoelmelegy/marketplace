@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
 import useCollections from 'hooks/useCollections'
+import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import Masonry from 'react-masonry-css'
 
 type Props = {
