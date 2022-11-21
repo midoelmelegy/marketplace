@@ -18,6 +18,7 @@ const Explore: FC = () => {
               </div>
             </div>
             <CollectionsGridFull collections={collections} />
+          </div>
     </Layout>
   )
 }
