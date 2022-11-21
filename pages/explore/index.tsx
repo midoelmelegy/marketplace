@@ -44,29 +44,13 @@ const metadata = {
   },
 }
 
-const Explore: NextPage<Props> = ({ fallback }) => {
+const Explore: FC = () => {
   const collections = useBigCollections()
-  const router = useRouter()
 
   const title = META_TITLE && metadata.title(META_TITLE)
   const description = META_DESCRIPTION && metadata.description(META_DESCRIPTION)
   const image = metadata.image(META_IMAGE)
   const tagline = metadata.tagline(TAGLINE)
-
-  useEffect(() => {
-    if (REDIRECT_HOMEPAGE && COLLECTION) {
-      router.push(`/collections/${COLLECTION}`)
-    }
-  }, [COLLECTION, REDIRECT_HOMEPAGE])
-
-  // Return error page if the API base url or the environment's
-  // chain ID are missing
-  if (!CHAIN_ID) {
-    console.debug({ CHAIN_ID })
-    return <div>There was an error</div>
-  }
-
-  if (REDIRECT_HOMEPAGE && COLLECTION) return null
 
   return (
     <Layout navbar={{}}>
