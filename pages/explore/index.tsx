@@ -3,6 +3,7 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-kit-client'
 import setParams from 'lib/params'
 import Head from 'next/head'
+import usePaginatedCollections from 'hooks/usePaginatedCollections'
 import CollectionsGridFull from 'components/CollectionsGridFull'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
@@ -51,6 +52,7 @@ const metadata = {
 }
 
 const Explore: NextPage<Props> = ({ fallback }) => {
+  const collections = usePaginatedCollections()
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
 
