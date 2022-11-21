@@ -2,11 +2,11 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
-import usePaginatedCollections from 'hooks/usePaginatedCollections'
+import useBigCollections from 'hooks/useBigCollections'
 import Masonry from 'react-masonry-css'
 
 type Props = {
-  collections: ReturnType<typeof usePaginatedCollections>
+  collections: ReturnType<typeof useBigCollections>
 }
 
 const CollectionsGridFull: FC<Props> = ({ collections }) => {
