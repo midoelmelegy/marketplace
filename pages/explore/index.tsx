@@ -1,6 +1,6 @@
 import useBigCollections from 'hooks/useBigCollections'
 import Layout from 'components/Layout'
-import type { InferGetStaticPropsType, NextPage } from 'next'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import CollectionsGridFull from 'components/CollectionsGridFull'
 import { useEffect } from 'react'
