@@ -21,7 +21,7 @@ export default function useCollections(
 
   const collections = useSWRInfinite<Collections>(
     (index, previousPageData) =>
-      getKey(pathname, index, previousPageData),
+      getKey(pathname, sortBy, index, previousPageData),
     fetcher,
     {
       revalidateFirstPage: false,
