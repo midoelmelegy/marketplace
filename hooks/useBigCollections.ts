@@ -1,6 +1,7 @@
 import { paths } from '@reservoir0x/reservoir-kit-client'
 import fetcher from 'lib/fetcher'
 import setParams from 'lib/params'
+import { useEffect } from 'react'
 import { useInView } from 'react-intersection-observer'
 import useSWRInfinite, { SWRInfiniteKeyLoader } from 'swr/infinite'
 
@@ -46,7 +47,7 @@ const getKey: (
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
     offset: index * 20,
-    sortBy: '7DayVolume',
+    sortBy: '30DayVolume',
   }
 
   const href = setParams(pathname, query)
