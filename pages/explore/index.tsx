@@ -1,7 +1,7 @@
 import useBigCollections from 'hooks/useBigCollections'
 import Head from 'next/head'
 import React, { FC } from 'react'
-import CollectionsGrid from './CollectionsGrid'
+import CollectionsGridFull from 'components/CollectionsGridFull'
 
 const META_TITLE = process.env.NEXT_PUBLIC_META_TITLE
 const META_DESCRIPTION = process.env.NEXT_PUBLIC_META_DESCRIPTION
@@ -36,7 +36,7 @@ const Explore: FC = () => {
       <header className="col-span-full mb-12 mt-[66px] px-4 md:mt-40 lg:px-0">
         <h1 className="reservoir-h1 text-center dark:text-white">{tagline}</h1>
       </header>
-      <CollectionsGrid collections={collections} />
+      <CollectionsGridFull collections={collections} />
     </>
   )
 }
