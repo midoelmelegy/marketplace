@@ -84,7 +84,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                          </span>
                        </div>
 
-                         <FormatEth amount={collection?.floorPrice} />
+                         <FormatEth amount={floorPrice} />
                     </div>
                   </div>
                 </a>
