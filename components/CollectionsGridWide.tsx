@@ -8,6 +8,7 @@ import Masonry from 'react-masonry-css'
 
 type Props = {
   collections: ReturnType<typeof useCollections>
+  floor: number | undefined
 }
 
 const CollectionsGridWide: FC<Props> = ({ collections }) => {
@@ -84,7 +85,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                          </span>
                        </div>
 
-                         <FormatEth amount={floorPrice} />
+                       <FormatEth amount={collection?.floor} maximumFractionDigits={2} />
                     </div>
                   </div>
                 </a>
