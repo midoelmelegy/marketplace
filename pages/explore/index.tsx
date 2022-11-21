@@ -3,8 +3,11 @@ import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { paths } from '@reservoir0x/reservoir-kit-client'
 import setParams from 'lib/params'
 import Head from 'next/head'
-import usePaginatedCollections from 'hooks/usePaginatedCollections'
+import TrendingCollectionTable from 'components/TrendingCollectionTable'
+import SortTrendingCollections from 'components/SortTrendingCollections'
+import Footer from 'components/Footer'
 import CollectionsGridFull from 'components/CollectionsGridFull'
+import usePaginatedCollections from 'hooks/usePaginatedCollections'
 import { useMediaQuery } from '@react-hookz/web'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
@@ -84,16 +87,19 @@ const Explore: NextPage<Props> = ({ fallback }) => {
         {image}
       </Head>
       <header className="col-span-full mb-12 mt-[66px] md:mt-12 lg:px-0">
-                  <h1 className="reservoir-h1 text-center dark:text-white"></h1>
+                  <h1 className="medium-screen-extra-padding reservoir-h1 text-center dark:text-white homepage-header-text-extra-small-screen">{tagline}</h1>
+                  <CollectionsGridFull collections={collections} />
           </header>
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
-              <div className="medium-screen-extra-padding reservoir-h1 dark:text-white">
+              <div className="medium-screen-extra-padding reservoir-h4 dark:text-white">
               Explore collections
               </div>
+              {!isSmallDevice && <SortTrendingCollections />}
             </div>
-            <CollectionsGridFull collections={collections} />
+            <TrendingCollectionTable fallback={fallback} />
           </div>
+          <Footer/>
     </Layout>
   )
 }
