@@ -85,7 +85,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                          </span>
                        </div>
 
-                       <FormatEth amount={collection?.floor} maximumFractionDigits={2} />
+                       <FormatEth amount={floor} maximumFractionDigits={2} />
                     </div>
                   </div>
                 </a>
