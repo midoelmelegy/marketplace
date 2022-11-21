@@ -2,13 +2,11 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
-import FormatEth from './FormatEth'
 import useCollections from 'hooks/useCollections'
 import Masonry from 'react-masonry-css'
 
 type Props = {
   collections: ReturnType<typeof useCollections>
-  floor: number | undefined
 }
 
 const CollectionsGridWide: FC<Props> = ({ collections }) => {
@@ -79,13 +77,6 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
-                      <div>
-                         <span className="text-primary-700 dark:text-primary-100">
-                           Floor price:
-                         </span>
-                       </div>
-
-                       <FormatEth amount={floor} maximumFractionDigits={2} />
                     </div>
                   </div>
                 </a>
