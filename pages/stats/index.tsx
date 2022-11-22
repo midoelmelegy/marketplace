@@ -4,7 +4,7 @@ import React, { FC } from 'react'
 import CollectionsGridLarge from 'components/CollectionsGridLarge'
 
 const Stats: FC = () => {
-  const collections = useBigCollections()
+  const collections = useLargeCollections()
 
   return (
     <Layout navbar={{}}>
