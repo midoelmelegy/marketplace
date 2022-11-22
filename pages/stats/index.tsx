@@ -1,4 +1,4 @@
-import useBigCollections from 'hooks/useBigCollections'
+import useLargeCollections from 'hooks/useLargeCollections'
 import Layout from 'components/Layout'
 import React, { FC } from 'react'
 import CollectionsGridLarge from 'components/CollectionsGridLarge'
