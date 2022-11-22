@@ -84,7 +84,7 @@ const CollectionsGridFull: FC<Props> = ({ collections }) => {
               </Link>
             ))}
     {!didReachEnd &&
-        Array(5)
+        Array(20)
           .fill(null)
           .map((_, index) => {
             if (index === 0) {
