@@ -14,7 +14,7 @@ const Stats: FC = () => {
           <div className="col-span-full small-screen-no-padding md:px-16">
             <div className="mb-9 flex w-full items-center justify-between">
               <div className="medium-screen-extra-padding reservoir-h1 dark:text-white">
-              Explore
+              Stats
               </div>
             </div>
             <CollectionsGridLarge collections={collections} />
