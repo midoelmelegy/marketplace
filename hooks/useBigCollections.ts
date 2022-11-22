@@ -49,6 +49,10 @@ const getKey: (
     sortBy: '7DayVolume',
   }
 
+  if (previousPageData) query.continuation = previousPageData.continuation
+
+  if (sortBy === '30DayVolume' || sortBy === '7DayVolume') query.sortBy = sortBy
+  
   const href = setParams(pathname, query)
 
   return href
