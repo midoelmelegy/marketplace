@@ -41,12 +41,11 @@ const getKey: (
   previousPageData: paths['/collections/v5']['get']['responses']['200']['schema']
 ) => {
   // Reached the end
-  if (previousPageData && previousPageData?.collections?.length === 0)
-    return null
+  if (previousPageData && !previousPageData?.continuation) return null
 
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
-    sortBy: '7DayVolume',
+    sortBy: '1DayVolume',
   }
 
   if (previousPageData) query.continuation = previousPageData.continuation
