@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import ImagesGrid from './ImagesGrid'
+import FormatEth from 'components/FormatEth'
 import useCollections from 'hooks/useCollections'
 import Masonry from 'react-masonry-css'
 
