@@ -99,7 +99,7 @@ function processCollection(
   collection:
     | NonNullable<
         NonNullable<Props['collections']>['collections']
-      >[0]
+      >
     | undefined
 ) {
   const data = {
