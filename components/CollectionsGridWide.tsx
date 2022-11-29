@@ -80,11 +80,11 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
                     </div>
-                  </div>
-                  <span>
-                    Floor:
+                    <span>
+                      Floor:
                       <FormatEth amount={collection?.floorAsk?.price?.amount?.native} />
-                  </span>
+                    </span>
+                  </div>
                 </a>
               </Link>
             ))}
