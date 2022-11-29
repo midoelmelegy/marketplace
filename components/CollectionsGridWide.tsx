@@ -25,7 +25,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
   
     const {
       floorPrice,
-    } = processCollection(collections)
+    } = processCollection(collection)
     
     const didReachEnd = data && data[data.length - 1]?.collections?.length === 0
 
