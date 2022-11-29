@@ -23,10 +23,6 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
         .filter((collection) => !collection?.sampleImages?.includes(null))
     : []
   
-    const {
-      floorPrice,
-    } = processCollection(collection)
-    
     const didReachEnd = data && data[data.length - 1]?.collections?.length === 0
 
   return (
@@ -62,7 +58,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
             })
             .map((collection, idx) => (
               <Link
-                key={`${collection?.name}${idx}`}
+                key={`${collection?.name, collection?.floorPrice}${idx}`}
                 href={`/collections/${collection?.id}`}
               >
                 <a className="group mb-6 block transform-gpu overflow-hidden rounded-[16px] border border-[#D4D4D4] bg-white p-3 transition ease-in hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-lg hover:ease-out dark:border-0 dark:bg-neutral-800 dark:ring-1 dark:ring-neutral-600">
@@ -83,7 +79,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
-                      <FormatEth amount={floorPrice} />
+                      <FormatEth amount={collection?.floorPrice} />
                     </div>
                   </div>
                 </a>
@@ -94,19 +90,3 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 }
 
 export default CollectionsGridWide
-
-function processCollection(
-  collection:
-    | NonNullable<
-        NonNullable<Props['collections']>['collections']
-      >
-    | undefined
-) {
-  const data = {
-    floorPrice: collection?.floorAsk?.price?.amount?.native,
-  }
-
-  const tokenHref = `/collections/${data.id}`
-
-  return { ...data, tokenHref }
-}
