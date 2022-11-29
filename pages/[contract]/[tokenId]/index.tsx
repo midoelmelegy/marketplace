@@ -11,7 +11,6 @@ import CollectionInfo from 'components/token/CollectionInfo'
 import Owner from 'components/token/Owner'
 import PriceData from 'components/token/PriceData'
 import TokenMedia from 'components/token/TokenMedia'
-import TokensGridMore from 'components/TokensGridMore'
 import { useEffect, useState } from 'react'
 import { TokenDetails } from 'types/reservoir'
 import {
@@ -94,7 +93,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
     includeAttributes: true,
   })
 
-  const { tokens, ref: refTokens } = tokenData.data
+  const tokens = tokenData.data
   const token = tokens?.[0] || { token: tokenDetails }
   const checkUserOwnership = token.token?.kind === 'erc1155'
   const { data: userTokens } = useUserTokens(
@@ -195,11 +194,6 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
         <CollectionInfo collection={collection} token={token.token} />
         <TokenInfo token={token.token} />
       </div>
-      <TokensGridMore
-        tokens={tokens}
-        viewRef={refTokens}
-        collectionImage={collection?.image as string}
-      />
     </Layout>
   )
 }
