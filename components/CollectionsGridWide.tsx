@@ -77,16 +77,11 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                       <div className="h-12 w-12 flex-none rounded-l bg-gradient-to-br from-primary-500 to-primary-900"></div>
                     )}
 
-                    <div className="reservoir-subtitle mb-3 overflow-hidden truncate px-4 pt-4 dark:text-white lg:pt-3">
+                    <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
                     </div>
-                    <div className="flex items-center justify-between px-4 pb-4 lg:pb-3">
-
-                    <div className="text-left">Floor:</div>
-                    <div className="reservoir-h6">
+                    Floor:
                     <FormatEth amount={collection?.floorAsk?.price?.amount?.native} />
-                    </div>
-                    </div>
                   </div>
                 </a>
               </Link>
