@@ -21,7 +21,12 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
         // @ts-ignore
         .filter((collection) => !collection?.sampleImages?.includes(null))
     : []
-  const didReachEnd = data && data[data.length - 1]?.collections?.length === 0
+  
+    const {
+      floorPrice,
+    } = processCollection(collections)
+    
+    const didReachEnd = data && data[data.length - 1]?.collections?.length === 0
 
   return (
     <Masonry
@@ -77,6 +82,7 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
+                      <FormatEth amount={floorPrice} />
                     </div>
                   </div>
                 </a>
@@ -87,3 +93,19 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
 }
 
 export default CollectionsGridWide
+
+function processCollection(
+  collection:
+    | NonNullable<
+        NonNullable<Props['collections']>['collections']
+      >[0]
+    | undefined
+) {
+  const data = {
+    floorPrice: collection?.floorAsk?.price?.amount?.native,
+  }
+
+  const tokenHref = `/collections/${data.id}`
+
+  return { ...data, tokenHref }
+}
