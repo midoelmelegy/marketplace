@@ -80,10 +80,11 @@ const CollectionsGridWide: FC<Props> = ({ collections }) => {
                     <div className="reservoir-subtitle dark:text-white">
                       {collection?.name}
                     </div>
-                    <span>
-                    Floor:
+                    <div className="flex items-center gap-1">
+                    <span>Floor:
                     <FormatEth amount={collection?.floorAsk?.price?.amount?.native} />
                     </span>
+                    </div>
                   </div>
                 </a>
               </Link>
