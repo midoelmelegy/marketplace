@@ -94,7 +94,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
     includeAttributes: true,
   })
 
-  const { tokens } = tokenData.data
+  const tokens = tokenData.data
   const token = tokens?.[0] || { token: tokenDetails }
   const checkUserOwnership = token.token?.kind === 'erc1155'
   const { data: userTokens } = useUserTokens(
