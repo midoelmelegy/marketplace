@@ -196,7 +196,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
         <TokenInfo token={token.token} />
       </div>
       <TokensGridMore
-        token={tokens}
+        tokens={token}
         collectionImage={collection?.image as string}
       />
     </Layout>
