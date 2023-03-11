@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { FaShoppingCart } from 'react-icons/fa'
 import React, {
   ComponentPropsWithoutRef,
@@ -14,14 +14,11 @@ import useTokens from 'hooks/useTokens'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { getCartCurrency, getTokensMap } from 'recoil/cart'
 import { useAccount, useNetwork, useSigner } from 'wagmi'
-import recoilCartTokens, { getPricingPools } from 'recoil/cart'
+import recoilCartTokens from 'recoil/cart/atom'
 import { ListModal, useReservoirClient } from '@reservoir0x/reservoir-kit-ui'
 import { setToast } from './token/setToast'
 import { MutatorCallback } from 'swr'
 import { useMediaQuery } from '@react-hookz/web'
-import RarityTooltip from './RarityTooltip'
-import { Collection } from 'types/reservoir'
-import { getPricing } from 'lib/token/pricing'
 
 const SOURCE_ICON = process.env.NEXT_PUBLIC_SOURCE_ICON
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
@@ -41,8 +38,6 @@ if (CURRENCIES) {
 type Props = {
   token?: ReturnType<typeof useTokens>['tokens']['data'][0]
   collectionImage: string | undefined
-  collectionSize?: number | undefined
-  collectionAttributes?: Collection['attributes']
   mutate: MutatorCallback
   setClearCartOpen?: Dispatch<SetStateAction<boolean>>
   setCartToSwap?: Dispatch<SetStateAction<any | undefined>>
@@ -51,8 +46,6 @@ type Props = {
 const TokenCard: FC<Props> = ({
   token,
   collectionImage,
-  collectionSize,
-  collectionAttributes,
   mutate,
   setClearCartOpen,
   setCartToSwap,
@@ -64,7 +57,6 @@ const TokenCard: FC<Props> = ({
   const tokensMap = useRecoilValue(getTokensMap)
   const cartCurrency = useRecoilValue(getCartCurrency)
   const [cartTokens, setCartTokens] = useRecoilState(recoilCartTokens)
-  const cartPools = useRecoilValue(getPricingPools)
 
   const reservoirClient = useReservoirClient()
   const singleColumnBreakpoint = useMediaQuery('(max-width: 640px)')
@@ -73,19 +65,13 @@ const TokenCard: FC<Props> = ({
 
   if (!CHAIN_ID) return null
   const isInTheWrongNetwork = Boolean(signer && activeChain?.id !== +CHAIN_ID)
-  const tokenId = `${token?.token?.contract}:${token?.token?.tokenId}`
 
-  const isInCart = Boolean(tokensMap[tokenId])
+  const isInCart = Boolean(
+    tokensMap[`${token?.token?.contract}:${token?.token?.tokenId}`]
+  )
   const isOwner =
     token?.token?.owner?.toLowerCase() === account?.address?.toLowerCase()
   const imageSize = singleColumnBreakpoint ? 533 : 250
-
-  let price = getPricing(cartPools, token)
-  let canAddToCart = true
-
-  if (!price && token.market?.floorAsk?.dynamicPricing?.data?.pool) {
-    canAddToCart = false
-  }
 
   return (
     <div
@@ -101,7 +87,6 @@ const TokenCard: FC<Props> = ({
       <Link
         key={`${token?.token?.contract}:${token?.token?.tokenId}`}
         href={`/${token?.token?.contract}/${token?.token?.tokenId}`}
-        legacyBehavior={true}
       >
         <a className="mb-[85px]">
           {token?.token?.image ? (
@@ -144,37 +129,26 @@ const TokenCard: FC<Props> = ({
       </Link>
       <div
         className={`absolute bottom-[0px] w-full bg-white transition-all  dark:bg-neutral-800 md:-bottom-[41px] ${
-          !isOwner && !price ? '' : 'group-hover:bottom-[0px]'
+          !isOwner && !token?.market?.floorAsk?.price
+            ? ''
+            : 'group-hover:bottom-[0px]'
         }`}
       >
-        <div className="flex items-center justify-between">
-          <div
-            className="reservoir-subtitle mb-3 overflow-hidden truncate px-4 pt-4 dark:text-white lg:pt-3"
-            title={token?.token?.name || token?.token?.tokenId}
-          >
-            {token?.token?.name || `#${token?.token?.tokenId}`}
-          </div>
-          {collectionSize &&
-            collectionAttributes &&
-            collectionAttributes?.length >= 2 &&
-            collectionSize >= 2 &&
-            token.token?.rarityRank &&
-            token.token?.kind != 'erc1155' && (
-              <RarityTooltip
-                rarityRank={token.token?.rarityRank}
-                collectionSize={collectionSize}
-              />
-            )}
+        <div
+          className="reservoir-subtitle mb-3 overflow-hidden truncate px-4 pt-4 dark:text-white lg:pt-3"
+          title={token?.token?.name || token?.token?.tokenId}
+        >
+          {token?.token?.name || `#${token?.token?.tokenId}`}
         </div>
         <div className="flex items-center justify-between px-4 pb-4 lg:pb-3">
-          {price?.amount?.decimal != null &&
-          price?.amount?.decimal != undefined ? (
+          {token?.market?.floorAsk?.price?.amount?.decimal != null &&
+          token?.market?.floorAsk?.price?.amount?.decimal != undefined ? (
             <>
               <div className="reservoir-h6">
                 <FormatCrypto
-                  amount={price?.amount?.decimal}
-                  address={price?.currency?.contract}
-                  decimals={price?.currency?.decimals}
+                  amount={token?.market?.floorAsk?.price?.amount?.decimal}
+                  address={token?.market?.floorAsk?.price?.currency?.contract}
+                  decimals={token.market?.floorAsk?.price?.currency?.decimals}
                   maximumFractionDigits={4}
                 />
               </div>
@@ -206,7 +180,7 @@ const TokenCard: FC<Props> = ({
             <ListModal
               trigger={
                 <button className="btn-primary-fill reservoir-subtitle flex h-[40px] items-center justify-center whitespace-nowrap rounded-none text-white focus:ring-0">
-                  {price?.amount?.decimal
+                  {token?.market?.floorAsk?.price?.amount?.decimal
                     ? 'Create New Listing'
                     : 'List for Sale'}
                 </button>
@@ -235,14 +209,10 @@ const TokenCard: FC<Props> = ({
             />
           </div>
         )}
-        {price?.amount?.decimal != null &&
-          price?.amount?.decimal != undefined &&
+        {token?.market?.floorAsk?.price?.amount?.decimal != null &&
+          token?.market?.floorAsk?.price?.amount?.decimal != undefined &&
           !isOwner && (
-            <div
-              className={`grid ${
-                isInCart || canAddToCart ? 'grid-cols-2' : ''
-              }`}
-            >
+            <div className="grid grid-cols-2">
               <BuyNow
                 data={{
                   token,
@@ -252,7 +222,7 @@ const TokenCard: FC<Props> = ({
                 isInTheWrongNetwork={isInTheWrongNetwork}
                 buttonClassName="btn-primary-fill reservoir-subtitle flex h-[40px] items-center justify-center whitespace-nowrap rounded-none text-white focus:ring-0"
               />
-              {isInCart && (
+              {isInCart ? (
                 <button
                   onClick={() => {
                     const newCartTokens = [...cartTokens]
@@ -269,15 +239,15 @@ const TokenCard: FC<Props> = ({
                 >
                   Remove
                 </button>
-              )}
-              {!isInCart && canAddToCart && (
+              ) : (
                 <button
                   disabled={isInTheWrongNetwork}
                   onClick={() => {
                     if (token && token.token && token.market) {
                       if (
                         !cartCurrency ||
-                        price?.currency?.contract === cartCurrency?.contract
+                        token.market.floorAsk?.price?.currency?.contract ===
+                          cartCurrency?.contract
                       ) {
                         setCartTokens([
                           ...cartTokens,

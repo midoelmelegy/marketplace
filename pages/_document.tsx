@@ -71,14 +71,10 @@ const MyDocument = function () {
       {/* Reservoir Meta Tags */}
       {SOURCE_NAME ? (
         <meta property="reservoir:title" content={SOURCE_NAME} />
-      ) : (
-        <meta />
-      )}
+      ) : null}
       {SOURCE_ICON || FAVICON ? (
         <meta property="reservoir:icon" content={SOURCE_ICON || FAVICON} />
-      ) : (
-        <meta />
-      )}
+      ) : null}
 
       {chain && chain.network ? (
         <meta
@@ -87,17 +83,13 @@ const MyDocument = function () {
           }`}
           content="/${contract}/${tokenId}"
         />
-      ) : (
-        <meta />
-      )}
+      ) : null}
 
-      {FONT_URLS ? (
-        FONT_URLS.split(',').map((link, i) => (
-          <link key={i} href={link} rel="stylesheet" />
-        ))
-      ) : (
-        <meta />
-      )}
+      {FONT_URLS
+        ? FONT_URLS.split(',').map((link, i) => (
+            <link key={i} href={link} rel="stylesheet" />
+          ))
+        : null}
 
       <body className="bg-white text-neutral-800 dark:bg-black dark:text-white">
         <Main />

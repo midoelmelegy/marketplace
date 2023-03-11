@@ -1,4 +1,4 @@
-import { paths } from '@reservoir0x/reservoir-sdk'
+import { paths } from '@reservoir0x/reservoir-kit-client'
 import fetcher from 'lib/fetcher'
 import setParams from 'lib/params'
 import { NextRouter } from 'next/router'
@@ -28,7 +28,7 @@ export default function usePaginatedCollections(
       getKey(pathname, sortBy, index, previousPageData),
     fetcher,
     {
-      revalidateOnMount: true,
+      revalidateFirstPage: false,
       fallbackData: [
         {
           collections: fallback?.collections,
@@ -63,7 +63,6 @@ const getKey: (
   let query: paths['/collections/v5']['get']['parameters']['query'] = {
     limit: 20,
     sortBy: '1DayVolume',
-    normalizeRoyalties: true,
   }
 
   if (COLLECTION && !COMMUNITY) query.contract = [COLLECTION]

@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import { paths } from '@reservoir0x/reservoir-kit-client'
+import React, { FC, useContext } from 'react'
 import { SWRResponse } from 'swr'
 import { useSigner } from 'wagmi'
+import { GlobalContext } from 'context/GlobalState'
 import { BuyModal, useTokens } from '@reservoir0x/reservoir-kit-ui'
 import { useSwitchNetwork } from 'wagmi'
-import { useConnectModal } from '@rainbow-me/rainbowkit'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 
@@ -25,10 +26,10 @@ const BuyNow: FC<Props> = ({
   buttonClassName = 'btn-primary-fill w-full',
   mutate,
 }) => {
+  const { dispatch } = useContext(GlobalContext)
   const { switchNetworkAsync } = useSwitchNetwork({
     chainId: CHAIN_ID ? +CHAIN_ID : undefined,
   })
-  const { openConnectModal } = useConnectModal()
 
   let forSale = false
   let tokenId: string | undefined
@@ -69,8 +70,8 @@ const BuyNow: FC<Props> = ({
           }
         }
 
-        if (!signer && openConnectModal) {
-          openConnectModal()
+        if (!signer) {
+          dispatch({ type: 'CONNECT_WALLET', payload: true })
         }
       }}
     >

@@ -1,4 +1,4 @@
-import { paths } from '@reservoir0x/reservoir-sdk'
+import { paths } from '@reservoir0x/reservoir-kit-client'
 import { useReservoirClient } from '@reservoir0x/reservoir-kit-ui'
 import { NextRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -24,17 +24,9 @@ export default function useTokens(
     collection: collectionId,
     includeTopBid: includeTopBid,
     sortBy: 'floorAskPrice',
-    sortDirection: 'asc',
-    includeDynamicPricing: true,
   }
 
   if (source) query.source = reservoirClient?.source
-
-  const sortDirection = router.query['sortDirection']?.toString()
-  const sortBy = router.query['sortBy']?.toString()
-
-  if (sortBy === 'tokenId' || sortBy === 'rarity') query.sortBy = sortBy
-  if (sortDirection === 'desc') query.sortDirection = 'desc'
 
   // Extract all queries of attribute type
   Object.keys(router.query)

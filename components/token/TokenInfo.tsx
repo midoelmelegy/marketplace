@@ -1,10 +1,8 @@
-import useEnvChain from 'hooks/useEnvChain'
 import { truncateAddress } from 'lib/truncateText'
 import React, { FC, useState } from 'react'
 import { FiExternalLink, FiRefreshCcw } from 'react-icons/fi'
 import { TokenDetails } from 'types/reservoir'
 import { setToast } from './setToast'
-import { mainnet } from 'wagmi/chains'
 
 const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 
@@ -14,10 +12,8 @@ type Props = {
 
 const TokenInfo: FC<Props> = ({ token }) => {
   const [refreshLoading, setRefreshLoading] = useState(false)
-  const envChain = useEnvChain()
 
-  const blockExplorerBaseUrl =
-    envChain?.blockExplorers?.default?.url || 'https://etherscan.io'
+  // const token = details.data?.tokens?.[0]
 
   async function refreshToken(token: string | undefined) {
     function handleError(message?: string) {
@@ -112,7 +108,7 @@ const TokenInfo: FC<Props> = ({ token }) => {
               className="reservoir-h6 flex items-center gap-2 font-headings text-primary-700 dark:text-primary-100"
               target="_blank"
               rel="noopener noreferrer"
-              href={`${blockExplorerBaseUrl}/token/${token?.contract}?a=${token?.tokenId}`}
+              href={`https://etherscan.io/address/${token?.contract}`}
             >
               {truncateAddress(token?.contract)}
               <FiExternalLink className="h-4 w-4" />

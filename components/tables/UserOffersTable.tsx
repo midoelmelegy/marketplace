@@ -14,7 +14,6 @@ import LoadingIcon from 'components/LoadingIcon'
 import useCoinConversion from 'hooks/useCoinConversion'
 import { formatDollar } from 'lib/numbers'
 import { useMediaQuery } from '@react-hookz/web'
-import useEnvChain from 'hooks/useEnvChain'
 
 const API_BASE =
   process.env.NEXT_PUBLIC_RESERVOIR_API_BASE || 'https://api.reservoir.tools'
@@ -28,11 +27,7 @@ type Props = {
 }
 
 const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
-  const chain = useEnvChain()
-  const usdConversion = useCoinConversion(
-    'usd',
-    chain?.nativeCurrency.symbol || 'ETH'
-  )
+  const usdConversion = useCoinConversion('usd')
   const { data: signer } = useSigner()
   const router = useRouter()
   const { address } = router.query
@@ -40,7 +35,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
     status: 'active',
     maker: address as string,
     limit: 20,
-    includeCriteriaMetadata: true,
+    includeMetadata: true,
   }
 
   if (collectionIds) {
@@ -109,7 +104,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
               className="border-b-[1px] border-solid border-b-neutral-300	py-[16px]"
             >
               <div className="flex items-center justify-between">
-                <Link href={href || '#'} legacyBehavior={true}>
+                <Link href={href || '#'}>
                   <a className="flex items-center gap-2">
                     <div className="relative h-14 w-14">
                       {image && (
@@ -252,7 +247,7 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
               >
                 {/* ITEM */}
                 <td className="whitespace-nowrap px-6 py-4 ">
-                  <Link href={href || '#'} legacyBehavior={true}>
+                  <Link href={href || '#'}>
                     <a className="flex items-center gap-2">
                       <div className="relative h-16 w-16">
                         {image && (
@@ -366,11 +361,11 @@ const UserOffersTable: FC<Props> = ({ modal, collectionIds }) => {
 export default UserOffersTable
 
 function processBid(bid: ReturnType<typeof useBids>['data']['0']) {
-  const kind = bid?.criteria?.kind
+  const kind = bid?.metadata?.kind
   // @ts-ignore
-  const key = bid?.criteria?.data?.attributes?.[0]?.key
+  const key = bid?.metadata?.data?.attributes?.[0]?.key
   // @ts-ignore
-  const value = bid?.criteria?.data?.attributes?.[0]?.value
+  const value = bid?.metadata?.data?.attributes?.[0]?.value
   let tokenId
   let contract = bid?.tokenSetId?.split(':')[1]
   let href
@@ -402,16 +397,16 @@ function processBid(bid: ReturnType<typeof useBids>['data']['0']) {
     kind,
     contract,
     tokenId,
-    image: bid?.criteria?.data?.token?.image || collectionRedirectUrl,
+    image: bid?.metadata?.data?.image || collectionRedirectUrl,
     tokenName: tokenId
-      ? bid?.criteria?.data?.token?.name || `#${tokenId}`
+      ? bid?.metadata?.data?.tokenName || `#${tokenId}`
       : undefined,
     expiration:
       bid?.expiration === 0
         ? 'Never'
         : DateTime.fromMillis(+`${bid?.expiration}000`).toRelative(),
     id: bid?.id,
-    collectionName: bid?.criteria?.data?.collection?.name,
+    collectionName: bid?.metadata?.data?.collectionName,
     price: bid?.price,
     source: {
       icon: (bid?.source?.icon as string) || null,
