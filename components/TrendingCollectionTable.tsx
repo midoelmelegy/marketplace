@@ -70,6 +70,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
               tokenHref,
               image,
               name,
+              sampleImages,
               days1,
               days30,
               days7,
@@ -118,6 +119,22 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                       >
                         {name}
                       </div>
+                    </a>
+                  </Link>
+                </td>
+                <td className="reservoir-body flex items-center gap-3">
+                  <Link href={tokenHref} legacyBehavior={true}>
+                    <a className="flex items-center gap-3">
+                      <img
+                        key={image + i}
+                        src={image}
+                        style={{
+                          borderRadius: 8,
+                          width: 56,
+                          height: 56,
+                          objectFit: 'cover',
+                        }}
+                      />
                     </a>
                   </Link>
                 </td>
@@ -204,6 +221,7 @@ function processCollection(
     id: collection?.id,
     image: collection?.image,
     name: collection?.name,
+    sampleImages: collection?.sampleImages,
     days1: collection?.volume?.['1day'],
     days7: collection?.volume?.['7day'],
     days30: collection?.volume?.['30day'],
