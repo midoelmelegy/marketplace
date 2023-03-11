@@ -16,7 +16,7 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
   return (
     <>
       {!!sample_images && sample_images.length > 0 ? (
-        <div className="flex h-full flex-col gap-1">
+        <div className="flex h-full flex-row gap-1">
           {sample_images.length > 1 ? (
             // SMALLER IMAGE, HAS SIDE IMAGES
             <img
@@ -35,7 +35,7 @@ const ImagesGrid: FC<Props> = ({ sample_images, value }) => {
             />
           )}
           {sample_images.length > 1 && (
-            <div className="flex h-full flex-col gap-1">
+            <div className="flex h-full flex-row gap-1">
               {sample_images.slice(1).map((image) => (
                 <img
                   key={image}
