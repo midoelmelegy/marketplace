@@ -123,17 +123,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                     </a>
                   </Link>
                 </td>
-                <td className="reservoir-body flex items-center gap-3">
-                  <Link href={tokenHref} legacyBehavior={true}>
-                    <a className="flex items-center gap-3">
-                      <ImagesGrid
-                        sample_images={collection?.sampleImages}
-                        value={collection?.name || ''}
-                      />
-                    </a>
-                  </Link>
-                </td>
-
+                
                 {/* VOLUME */}
                 {!isSmallDevice && (
                   <td className="reservoir-body whitespace-nowrap px-6 py-4 dark:text-white">
@@ -155,6 +145,16 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                           : days1Change
                       }
                     />
+                  </td>
+                )}
+
+                {/* IMAGES */}
+                {!isSmallDevice && (
+                  <td className="reservoir-body flex items-center gap-3">
+                    <ImagesGrid
+                       sample_images={collection?.sampleImages}
+                       value={collection?.name || ''}
+                     />
                   </td>
                 )}
 
