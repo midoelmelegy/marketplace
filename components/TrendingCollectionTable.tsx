@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
+import ImagesGrid from './ImagesGrid'
 import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import usePaginatedCollections from 'hooks/usePaginatedCollections'
 import { paths } from '@reservoir0x/reservoir-sdk'
@@ -125,14 +126,9 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                 <td className="reservoir-body flex items-center gap-3">
                   <Link href={tokenHref} legacyBehavior={true}>
                     <a className="flex items-center gap-3">
-                      <img
-                        src={image}
-                        style={{
-                          borderRadius: 8,
-                          width: 56,
-                          height: 56,
-                          objectFit: 'cover',
-                        }}
+                      <ImagesGrid
+                        sample_images={collection?.sampleImages}
+                        value={collection?.name || ''}
                       />
                     </a>
                   </Link>
@@ -220,7 +216,7 @@ function processCollection(
     id: collection?.id,
     image: collection?.image,
     name: collection?.name,
-    sampleImages: collection?.sampleImages,
+    sample_images: collection?.sampleImages,
     days1: collection?.volume?.['1day'],
     days7: collection?.volume?.['7day'],
     days30: collection?.volume?.['30day'],
