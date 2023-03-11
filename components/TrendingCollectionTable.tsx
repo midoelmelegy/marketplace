@@ -71,7 +71,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
               tokenHref,
               image,
               name,
-              sampleImages,
+              sample_images,
               days1,
               days30,
               days7,
