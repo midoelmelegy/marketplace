@@ -1,7 +1,7 @@
 import { FC } from 'react'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
-import ImagesGrid from './ImagesGrid'
+import TableImagesGrid from './TableImagesGrid'
 import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import usePaginatedCollections from 'hooks/usePaginatedCollections'
 import { paths } from '@reservoir0x/reservoir-sdk'
@@ -124,6 +124,16 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                   </Link>
                 </td>
                 
+                {/* IMAGES */}
+                {!isSmallDevice && (
+                  <td className="reservoir-body flex items-center gap-3">
+                    <TableImagesGrid
+                       sample_images={collection?.sampleImages}
+                       value={collection?.name || ''}
+                     />
+                  </td>
+                )}
+                
                 {/* VOLUME */}
                 {!isSmallDevice && (
                   <td className="reservoir-body whitespace-nowrap px-6 py-4 dark:text-white">
@@ -145,16 +155,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                           : days1Change
                       }
                     />
-                  </td>
-                )}
-
-                {/* IMAGES */}
-                {!isSmallDevice && (
-                  <td className="reservoir-body flex items-center gap-3">
-                    <ImagesGrid
-                       sample_images={collection?.sampleImages}
-                       value={collection?.name || ''}
-                     />
                   </td>
                 )}
 
