@@ -1,13 +1,13 @@
-import { paths } from '@reservoir0x/reservoir-kit-client'
+import { paths } from '@reservoir0x/reservoir-sdk'
 import { optimizeImage } from 'lib/optmizeImage'
 import React, { FC } from 'react'
 
 type Props = {
   sample_images: NonNullable<
-    paths['/collections/{collection}/attributes/explore/v2']['get']['responses']['200']['schema']['attributes']
+    paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
   >[0]['sampleImages']
   value: NonNullable<
-    paths['/collections/{collection}/attributes/explore/v2']['get']['responses']['200']['schema']['attributes']
+    paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
   >[0]['value']
 }
 

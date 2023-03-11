@@ -13,7 +13,7 @@ import { formatDollar, formatNumber } from 'lib/numbers'
 import FormatWEth from 'components/FormatWEth'
 import InfoTooltip from 'components/InfoTooltip'
 import { useMediaQuery } from '@react-hookz/web'
-import FormatEth from 'components/FormatEth'
+import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import Tooltip from 'components/Tooltip'
 
 const API_BASE =
@@ -133,7 +133,7 @@ const UserOffersReceivedTable: FC<Props> = ({
               ref={index === arr.length - 5 ? ref : null}
             >
               <div className="flex items-center justify-between">
-                <Link href={href || '#'}>
+                <Link href={href || '#'} legacyBehavior={true}>
                   <a className="flex items-center gap-2">
                     <div className="relative h-14 w-14">
                       {image && (
@@ -305,7 +305,7 @@ const UserOffersReceivedTable: FC<Props> = ({
               >
                 {/* ITEM */}
                 <td className="whitespace-nowrap px-6 py-4">
-                  <Link href={href || '#'}>
+                  <Link href={href || '#'} legacyBehavior={true}>
                     <a className="flex items-center gap-2">
                       <div className="relative h-16 w-16">
                         {image && (
@@ -388,7 +388,11 @@ const UserOffersReceivedTable: FC<Props> = ({
                 {/* FlOOR DIFFERENCE */}
                 <td className="whitespace-nowrap px-6 py-4 font-light text-neutral-600 dark:text-neutral-300">
                   <div className="flex flex-col">
-                    {floorAskPrice ? <FormatEth amount={floorAskPrice} /> : '-'}
+                    {floorAskPrice ? (
+                      <FormatNativeCrypto amount={floorAskPrice} />
+                    ) : (
+                      '-'
+                    )}
                     {floorAskPrice ? (
                       <span className="text-xs text-neutral-600 dark:text-neutral-300">
                         {floorDifference}

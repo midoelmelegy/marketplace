@@ -21,26 +21,33 @@ import { useRouter } from 'next/router'
 import * as Dialog from '@radix-ui/react-dialog'
 import LoadingIcon from 'components/LoadingIcon'
 import { useMediaQuery } from '@react-hookz/web'
+import { FiAlertCircle } from 'react-icons/fi'
 
 const API_BASE =
   process.env.NEXT_PUBLIC_RESERVOIR_API_BASE || 'https://api.reservoir.tools'
 
 type Props = {
+  isOwner: boolean
   collectionIds?: string[]
   modal: {
     isInTheWrongNetwork: boolean | undefined
     setToast: (data: ComponentProps<typeof Toast>['data']) => any
   }
+  showActive?: boolean
 }
 
-const UserListingsTable: FC<Props> = ({ modal, collectionIds }) => {
+const UserListingsTable: FC<Props> = ({
+  modal,
+  collectionIds,
+  showActive,
+  isOwner,
+}) => {
   const router = useRouter()
   const isMobile = useMediaQuery('only screen and (max-width : 730px)')
-  const [showActive, setShowActive] = useState(true)
   const { address } = router.query
   const params: Parameters<typeof useListings>['0'] = {
     maker: address as string,
-    includeMetadata: true,
+    includeCriteriaMetadata: true,
     status: showActive ? 'active' : 'inactive',
   }
   if (collectionIds) {
@@ -81,10 +88,29 @@ const UserListingsTable: FC<Props> = ({ modal, collectionIds }) => {
 
   return (
     <div className="mb-11 overflow-x-auto">
-      <ActiveFilters setShowActive={setShowActive} showActive={showActive} />
+      {!showActive && (
+        <div className="flex items-center rounded-lg bg-[#F5F5F5] p-4 text-sm dark:bg-[#262626]">
+          <FiAlertCircle className="mr-2 h-4 w-4 shrink-0 text-[#A3A3A3] dark:text-white" />
+          <span>
+            An inactive listing is a listing of your NFT that was never canceled
+            and is still fulfillable should that item be returned to your
+            wallet.
+          </span>
+        </div>
+      )}
       {listings.length === 0 && (
-        <div className="mt-14 grid justify-center dark:text-white">
-          You don&apos;t have any {showActive ? 'active' : 'inactive'} listings.
+        <div className="mt-14 flex flex-col items-center justify-center text-[#525252] dark:text-white">
+          <img
+            src="/icons/listing-icon.svg"
+            alt="No listings"
+            className="mb-10 dark:hidden"
+          />
+          <img
+            src="/icons/listing-icon-dark.svg"
+            alt="No listings"
+            className="mb-10 hidden dark:block"
+          />
+          No {showActive ? 'active' : 'inactive'} listings yet
         </div>
       )}
       {isMobile
@@ -95,6 +121,7 @@ const UserListingsTable: FC<Props> = ({ modal, collectionIds }) => {
               listing={listing}
               modal={modal}
               mutate={mutate}
+              isOwner={isOwner}
             />
           ))
         : listings.length > 0 && (
@@ -125,6 +152,7 @@ const UserListingsTable: FC<Props> = ({ modal, collectionIds }) => {
                     listing={listing}
                     modal={modal}
                     mutate={mutate}
+                    isOwner={isOwner}
                   />
                 ))}
               </tbody>
@@ -135,6 +163,7 @@ const UserListingsTable: FC<Props> = ({ modal, collectionIds }) => {
 }
 
 type UserListingsRowProps = {
+  isOwner: boolean
   listing: ReturnType<typeof useListings>['data'][0]
   modal: Props['modal']
   mutate: ReturnType<typeof useListings>['mutate']
@@ -142,6 +171,7 @@ type UserListingsRowProps = {
 }
 
 const UserListingsTableRow = ({
+  isOwner,
   listing,
   modal,
   mutate,
@@ -178,7 +208,7 @@ const UserListingsTableRow = ({
     >
       {/* ITEM */}
       <td className="whitespace-nowrap px-6 py-4 dark:text-white">
-        <Link href={tokenHref}>
+        <Link href={tokenHref} legacyBehavior={true}>
           <a className="flex items-center gap-2">
             <div className="relative h-16 w-16">
               {image && (
@@ -251,7 +281,7 @@ const UserListingsTableRow = ({
               tokenId,
             }}
             signer={signer}
-            show={true}
+            show={isOwner}
             isInTheWrongNetwork={modal.isInTheWrongNetwork}
             setToast={modal.setToast}
             mutate={mutate}
@@ -268,6 +298,7 @@ const UserListingsTableRow = ({
 }
 
 const UserListingsMobileRow = ({
+  isOwner,
   listing,
   modal,
   mutate,
@@ -303,7 +334,7 @@ const UserListingsMobileRow = ({
       ref={ref}
     >
       <div className="flex items-center justify-between">
-        <Link href={tokenHref || '#'}>
+        <Link href={tokenHref || '#'} legacyBehavior={true}>
           <a className="flex items-center gap-2">
             <div className="relative h-14 w-14">
               {image && (
@@ -366,7 +397,7 @@ const UserListingsMobileRow = ({
             tokenId,
           }}
           signer={signer}
-          show={true}
+          show={isOwner}
           isInTheWrongNetwork={modal.isInTheWrongNetwork}
           setToast={modal.setToast}
           mutate={mutate}
@@ -381,43 +412,6 @@ const UserListingsMobileRow = ({
   )
 }
 
-type ActiveFilterProps = {
-  showActive: boolean
-  setShowActive: Dispatch<SetStateAction<boolean>>
-}
-
-const ActiveFilters: FC<ActiveFilterProps> = ({
-  showActive,
-  setShowActive,
-}) => {
-  return (
-    <div className="flex gap-3">
-      <button
-        className={`rounded-full border-[1px] border-solid border-neutral-300 py-3  px-4 hover:opacity-[0.85] dark:border-neutral-600 dark:text-white ${
-          showActive
-            ? 'bg-primary-100 dark:bg-neutral-600'
-            : 'bg-white dark:bg-black'
-        }`}
-        onClick={() => setShowActive(true)}
-      >
-        Active
-      </button>
-      <button
-        className={`${
-          !showActive
-            ? 'bg-primary-100 dark:bg-neutral-600'
-            : 'bg-white dark:bg-black'
-        }
-      rounded-full border-[1px] border-solid border-neutral-300 py-3 px-4 hover:opacity-[0.85]
-    dark:border-neutral-600 dark:text-white`}
-        onClick={() => setShowActive(false)}
-      >
-        Inactive
-      </button>
-    </div>
-  )
-}
-
 export default UserListingsTable
 
 function processListing(listing: ReturnType<typeof useListings>['data'][0]) {
@@ -428,14 +422,14 @@ function processListing(listing: ReturnType<typeof useListings>['data'][0]) {
   const data = {
     contract,
     tokenId,
-    image: listing?.metadata?.data?.image || collectionRedirectUrl,
-    name: listing?.metadata?.data?.tokenName,
+    image: listing?.criteria?.data?.token?.image || collectionRedirectUrl,
+    name: listing?.criteria?.data?.token?.name,
     expiration:
       listing?.expiration === 0
         ? 'Never'
         : DateTime.fromMillis(+`${listing?.expiration}000`).toRelative(),
     id: listing?.id,
-    collectionName: listing?.metadata?.data?.collectionName,
+    collectionName: listing?.criteria?.data?.collection?.name,
     price: listing?.price,
     source: {
       icon: (listing?.source?.icon as string) || null,

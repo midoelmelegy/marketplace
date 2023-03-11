@@ -53,21 +53,7 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
           </Dialog.Close>
         </div>
 
-        {hasExternalLinks && (
-          <div className="grid">
-            {externalLinks.map(({ name, url }) => (
-              <a
-                key={url}
-                href={url}
-                rel="noopener noreferrer"
-                className="border-b border-neutral-300 p-4 text-[#4B5563] hover:text-[#1F2937] dark:border-neutral-600 dark:text-white dark:hover:bg-neutral-600"
-              >
-                {name}
-              </a>
-            ))}
-          </div>
-        )}
-        <div className="mt-2 px-4">
+        <div className="my-2 px-4">
           <ThemeSwitcher />
         </div>
         {accountData.isConnected ? (
@@ -91,7 +77,22 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
               </span>
             </div>
 
-            <Link href={`/address/${accountData.address}`}>
+            {hasExternalLinks && (
+              <div className="grid">
+                {externalLinks.map(({ name, url }) => (
+                  <a
+                    key={url}
+                    href={url}
+                    rel="noopener noreferrer"
+                    className="border-b border-neutral-300 p-4 text-[#4B5563] hover:text-[#1F2937] dark:border-neutral-600 dark:text-white dark:hover:bg-neutral-600"
+                  >
+                    {name}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            <Link href={`/address/${accountData.address}`} legacyBehavior={true}>
               <a
                 className="group flex w-full cursor-pointer items-center justify-between rounded border-b border-neutral-300 p-4 text-[#4B5563] outline-none transition hover:bg-neutral-100 hover:text-[#1F2937] focus:bg-neutral-100 dark:border-neutral-600 dark:text-white dark:hover:bg-neutral-600"
                 onClick={() => setOpen(false)}
@@ -112,7 +113,9 @@ const HamburgerMenu: FC<Props> = ({ externalLinks }) => {
           </>
         ) : (
           <div className="mt-12 px-4">
-            <ConnectWalletButton className="w-full" />
+            <ConnectWalletButton className="w-full">
+              <span>Connect Wallet</span>
+            </ConnectWalletButton>
           </div>
         )}
       </Dialog.Content>

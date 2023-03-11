@@ -1,10 +1,10 @@
-import { paths } from '@reservoir0x/reservoir-kit-client'
+import { paths } from '@reservoir0x/reservoir-sdk'
 import formatUrl from 'lib/formatUrl'
 import { formatNumber } from 'lib/numbers'
 import { optimizeImage } from 'lib/optmizeImage'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import FormatEth from './FormatEth'
+import FormatNativeCrypto from './FormatNativeCrypto'
 
 const ExploreTable = ({
   mappedAttributes,
@@ -12,7 +12,7 @@ const ExploreTable = ({
 }: {
   mappedAttributes: (
     | NonNullable<
-        paths['/collections/{collection}/attributes/explore/v2']['get']['responses']['200']['schema']['attributes']
+        paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
       >[0]
     | undefined
   )[]
@@ -52,6 +52,7 @@ const ExploreTable = ({
                         `attributes[${attribute?.key}]`
                       )}=${formatUrl(`${attribute?.value}`)}`
                 }
+                legacyBehavior={true}
               >
                 <a className="grid h-full items-center p-2 align-middle font-bold tracking-wide">
                   {attribute?.value}
@@ -61,17 +62,21 @@ const ExploreTable = ({
             <td className="pr-3">{formatNumber(attribute?.tokenCount)}</td>
             <td className="pr-3">{formatNumber(attribute?.onSaleCount)}</td>
             <td className="pr-3">
-              <FormatEth
+              <FormatNativeCrypto
                 amount={attribute?.floorAskPrices?.[0]}
                 logoWidth={7}
               />
             </td>
             <td className="pr-3">
-              <FormatEth amount={attribute?.topBid?.value} logoWidth={7} />
+              <FormatNativeCrypto
+                amount={attribute?.topBid?.value}
+                logoWidth={7}
+              />
             </td>
 
             <td className="w-[230px] pr-3">
               <Link
+                legacyBehavior={true}
                 href={
                   router.query.id
                     ? `/collections/${router.query.id}?${formatUrl(
@@ -105,10 +110,10 @@ const ExploreImages = ({
   value,
 }: {
   sample_images: NonNullable<
-    paths['/collections/{collection}/attributes/explore/v2']['get']['responses']['200']['schema']['attributes']
+    paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
   >[0]['sampleImages']
   value: NonNullable<
-    paths['/collections/{collection}/attributes/explore/v2']['get']['responses']['200']['schema']['attributes']
+    paths['/collections/{collection}/attributes/explore/v3']['get']['responses']['200']['schema']['attributes']
   >[0]['value']
 }) => (
   <div className="flex justify-start gap-1.5 py-1">
