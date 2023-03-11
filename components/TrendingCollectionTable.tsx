@@ -126,7 +126,6 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                   <Link href={tokenHref} legacyBehavior={true}>
                     <a className="flex items-center gap-3">
                       <img
-                        key={image + i}
                         src={image}
                         style={{
                           borderRadius: 8,
