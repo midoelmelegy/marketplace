@@ -126,7 +126,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
                 
                 {/* IMAGES */}
                 {!isSmallDevice && (
-                  <td className="reservoir-body flex items-center gap-3">
+                  <td className="reservoir-body">
                     <TableImagesGrid
                        sample_images={collection?.sampleImages}
                        value={collection?.name || ''}
